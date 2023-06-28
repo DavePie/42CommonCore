@@ -1,0 +1,1 @@
+ifconfig -a | grep --only-matching --extended-regexp '([a-zA-Z0-9]{2}:){5}..'
