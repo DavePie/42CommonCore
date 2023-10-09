@@ -1,40 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 15:58:07 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 16:45:28 by dvandenb         ###   ########.fr       */
+/*   Created: 2023/10/09 17:27:39 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/09 18:02:18 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-size_t	ft_strlen(const char *s);
 void	*ft_calloc(size_t count, size_t size);
 
-char	*ft_substr(char const *s, unsigned int start,
-size_t len)
+char	*ft_itoa(int n)
 {
-	size_t	curlen;
-	char	*substr;
-	size_t	i;
+	long	temp;
+	int		len;
+	char	*s;
 
-	curlen = ft_strlen(s);
-	if (start >= curlen || curlen == 0)
-		return (ft_calloc(1, sizeof(char)));
-	s += start;
-	curlen = ft_strlen(s);
-	if (curlen > len)
-		curlen = len;
-	substr = malloc(sizeof(char) * (curlen + 1));
-	if (substr == 0)
-		return (0);
-	i = -1;
-	while (++i < curlen)
-		substr[i] = s[i];
-	substr[i] = '\0';
-	return (substr);
+	temp = n;
+	len = 1;
+	while (temp != 0)
+	{
+		temp /= 10;
+		len++;
+	}
+	temp = n;
+	if (n <= 0 && len++)
+		temp *= -1;
+	s = malloc(sizeof(char) * (len));
+	s[--len] = '\0';
+	while ((len >= 0 && n >= 0) || len > 0)
+	{
+		s[--len] = (char)(temp % 10 + '0');
+		temp /= 10;
+	}
+	if (n < 0)
+		s[0] = '-';
+	return (s);
 }

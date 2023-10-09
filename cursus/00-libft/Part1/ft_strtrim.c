@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/29 10:52:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 15:59:59 by dvandenb         ###   ########.fr       */
+/*   Created: 2023/10/09 17:02:10 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/09 17:12:20 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <limits.h>
 
-void	ft_bzero(void *s, size_t n);
+char	*ft_strchr(const char *s, int c);
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	void	*ptr;
+	char	*ans;
+	int		slen;
+	int		i;
 
-	if ((count == 0 || size == 0) && count != SIZE_MAX)
-	{
-		ptr = malloc(0);
-		return (ptr);
-	}
-	if (count == SIZE_MAX || sizeof(size_t) / count < size)
-		return (0);
-	if (count < 0 || size < 0)
-		return (0);
-	ptr = malloc(count * size);
-	if (ptr == 0)
-		return (0);
-	ft_bzero(ptr, size * count);
-	return (ptr);
+	while (s1 && *s1 && ft_strchr(set, *s1))
+		s1++;
+	slen = 0;
+	while (s1[slen] && !ft_strchr(set, s1[slen]))
+		slen++;
+	i = -1;
+	ans = malloc(sizeof(char) * (slen - 1) + 1);
+	while (++i < slen)
+		ans[i] = s1[i];
+	ans[i] = '\0';
+	return (ans);
 }

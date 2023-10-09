@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 15:58:07 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 16:45:28 by dvandenb         ###   ########.fr       */
+/*   Created: 2023/10/09 16:36:17 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/09 16:58:19 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t count, size_t size);
 
-char	*ft_substr(char const *s, unsigned int start,
-size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	curlen;
-	char	*substr;
+	size_t	s1len;
+	size_t	s2len;
+	char	*ans;
 	size_t	i;
 
-	curlen = ft_strlen(s);
-	if (start >= curlen || curlen == 0)
-		return (ft_calloc(1, sizeof(char)));
-	s += start;
-	curlen = ft_strlen(s);
-	if (curlen > len)
-		curlen = len;
-	substr = malloc(sizeof(char) * (curlen + 1));
-	if (substr == 0)
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	if (sizeof(size_t) - s1len <= s2len)
 		return (0);
+	ans = malloc(s1len + s2len + 1);
 	i = -1;
-	while (++i < curlen)
-		substr[i] = s[i];
-	substr[i] = '\0';
-	return (substr);
+	while (++i < s1len)
+		ans[i] = s1[i];
+	i = -1;
+	while (++i < s2len)
+		ans[i + s1len] = s2[i];
+	ans[i + s1len] = '\0';
+	return (ans);
 }
