@@ -6,11 +6,13 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:24:36 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/06/28 18:14:10 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:10:09 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *add, int c, long unsigned int len)
+#include <stdlib.h>
+
+void	*ft_memset(void *add, int c, size_t len)
 {
 	unsigned char	*ptr;
 

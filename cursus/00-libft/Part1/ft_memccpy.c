@@ -6,11 +6,13 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:53:25 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/06/29 09:49:02 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:09:47 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memccpy(void *dst, const void *src, int c, long unsigned int n)
+#include <stdlib.h>
+
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	const char	*from;
 	char		*to;

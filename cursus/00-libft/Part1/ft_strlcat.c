@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 20:03:46 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 15:10:26 by dvandenb         ###   ########.fr       */
+/*   Created: 2023/10/09 13:50:42 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/09 14:09:50 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+unsigned int	ft_strlcat(char *dest, const char *src, unsigned long int size)
 {
-	while (*s && *s != (char)c)
-		s++;
-	if (*s == (char)c)
-		return ((char *)s);
-	return (0);
-}
+	unsigned int	len;
+	unsigned int	s;
 
-// #include <stdio.h>
-// int main()
-// {
-// 	char s[] = "tripouille";
-// 	printf("%s", ft_strchr(s, 't' + 256));
-// 	return 0;
-// }
+	s = size;
+	len = 0;
+	while (*dest != '\0' && s > 0)
+	{
+		dest++;
+		len++;
+		s--;
+	}
+	while (*src != '\0' && s > 1)
+	{
+		*dest++ = *src++;
+		s--;
+		len++;
+	}
+	while (*src++ != '\0')
+		len++;
+	if (s > 0)
+		*dest = '\0';
+	return (len);
+}

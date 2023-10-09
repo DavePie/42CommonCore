@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 09:49:09 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/06/29 13:53:13 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/09 12:48:00 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
-	if (*str == '+' || str == '-')
+	if (*str == '+' || *str == '-')
 		if (*(str++) == '-')
 			sign *= -1;
 	while (*str >= '0' && *str <= '9')

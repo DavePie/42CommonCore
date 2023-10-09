@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:07:38 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/06/28 20:10:29 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:44:58 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	*ft_strrchr(const char *s, int c)
 	ans = 0;
 	while (*s)
 	{
-		if (*s == c)
-			ans = s;
+		if (*s == (char)c)
+			ans = (char *)s;
 		s++;
 	}
-	if (*s == c)
-		return (s);
+	if (*s == (char)c)
+		return ((char *)s);
 	return (ans);
 }
