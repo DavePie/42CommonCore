@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:15:48 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 11:26:20 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:03:27 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	**ft_split(char const *str, char c)
 	i = 0;
 	total = count_strs(str, c);
 	ans = (char **)malloc(sizeof(*ans) * (total + 1));
+	if (!ans)
+		return (0);
 	while (*str)
 	{
 		j = 1;

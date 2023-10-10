@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:36:17 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 16:58:19 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:56:29 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2);
-	if (sizeof(size_t) - s1len <= s2len)
-		return (0);
 	ans = malloc(s1len + s2len + 1);
+	if (!ans)
+		return (0);
 	i = -1;
 	while (++i < s1len)
 		ans[i] = s1[i];

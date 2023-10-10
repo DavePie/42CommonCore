@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:27:39 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 18:02:18 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:59:18 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ char	*ft_itoa(int n)
 
 	temp = n;
 	len = 1;
-	while (temp != 0)
-	{
+	while (temp != 0 && len++)
 		temp /= 10;
-		len++;
-	}
 	temp = n;
 	if (n <= 0 && len++)
 		temp *= -1;
 	s = malloc(sizeof(char) * (len));
+	if (!s)
+		return (0);
 	s[--len] = '\0';
 	while ((len >= 0 && n >= 0) || len > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:08:02 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 10:15:21 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:33:52 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	l = ft_strlen(s);
 	ans = malloc(sizeof(char) * (l + 1));
+	if (!ans)
+		return (0);
 	ans[l] = '\0';
 	if (!ans)
 		return (0);

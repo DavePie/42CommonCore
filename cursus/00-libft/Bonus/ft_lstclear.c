@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:34:02 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 11:34:13 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:13:22 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*cur;
 	t_list	*temp;
 
+	if (!lst)
+		return ;
 	cur = *lst;
 	while (cur)
 	{

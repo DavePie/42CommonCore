@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:11:31 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 15:14:43 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:19:37 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ size_t len)
 	size_t	l;
 
 	if (!*needle)
-		return ("");
-	while (*haystack && len > 0)
+		return ((char *)haystack);
+	while (len > 0 && *haystack)
 	{
 		hay = (char *)haystack;
 		need = (char *)needle;
