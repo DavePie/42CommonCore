@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:08:02 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 18:17:35 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:15:21 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 size_t	ft_strlen(const char *s);
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	int		l;
 	char	*ans;
 
 	l = ft_strlen(s);
-	ans = malloc(sizeof(char) * l);
+	ans = malloc(sizeof(char) * (l + 1));
+	ans[l] = '\0';
 	if (!ans)
 		return (0);
 	while (--l >= 0)
