@@ -6,11 +6,11 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:47:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 11:33:08 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:15:33 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst, void (*del)(void*));

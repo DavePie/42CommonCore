@@ -1,22 +1,21 @@
-CC		= gcc
-INCDIR	= .
-CFLAGS	= -Wall -Wextra -Werror -I$(INCDIR)
-BINARY	= libft.a
-SRC_DIR = Part1
-B_DIR	= Bonus
-CFILES	= $(wildcard $(SRC_DIR)/*.c)
-BCFILES	= $(wildcard $(B_DIR)/*.c)
-OBJECTS	= $(patsubst %.c,%.o,$(CFILES))
-BOBJECTS= $(patsubst %.c,%.o,$(BCFILES))
-RM		= rm -f
+CC		:= gcc
+INCDIR	:= .
+CFLAGS	:= -Wall -Wextra -Werror -I$(INCDIR)
+BINARY	:= libft.a
+BCFILES	:= $(wildcard *.c)
+CFILES	:= $(filter-out $(wildcard ft_lst*.c), $(BCFILES))
+OBJECTS	:= $(patsubst %.c,%.o,$(CFILES))
+BOBJECTS:= $(patsubst %.c,%.o,$(BCFILES))
+LIB		:= ar rc
+RM		:= rm -f
 
 all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
-	ar rc $@ $^
+	$(LIB) $@ $^
 
-bonus: $(BOBJECTS) $(OBJECTS)
-	ar rc $(BINARY) $^
+bonus: $(BINARY) ${BOBJECTS}
+	$(LIB) -r $(BINARY) ${BOBJECTS}
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c -o $@ $^

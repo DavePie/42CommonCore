@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/29 11:41:55 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 13:07:46 by dvandenb         ###   ########.fr       */
+/*   Created: 2023/10/10 11:30:58 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/10 16:15:33 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s);
-
-char	*ft_strdup(const char *s1)
+int	ft_lstsize(t_list *lst)
 {
-	char	*dup;
-	char	*start;
+	int	len;
 
-	dup = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	start = dup;
-	if (!dup)
-		return (0);
-	while (*s1)
-		*(dup++) = *(s1++);
-	*dup = '\0';
-	return (start);
+	len = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		len++;
+	}
+	return (len);
 }

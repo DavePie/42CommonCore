@@ -6,13 +6,13 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:15:48 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 13:03:27 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:04:56 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	count_strs(const char *str, char c)
+static int	count_strs(const char *str, char c)
 {
 	int	prev_char;
 	int	cur_char;
@@ -30,7 +30,7 @@ int	count_strs(const char *str, char c)
 	return (total);
 }
 
-char	*get_word(const char *str, char c, int *j)
+static char	*get_word(const char *str, char c, int *j)
 {
 	int		i;
 	char	*ans;

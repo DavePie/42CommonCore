@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 13:22:39 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 12:55:11 by dvandenb         ###   ########.fr       */
+/*   Created: 2023/10/10 11:32:09 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/10 16:15:33 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t a)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	while (*s1 != '\0' && *s1 == *s2 && a > 0)
-	{
-		s1++;
-		s2++;
-		a--;
-	}
-	if (a == 0)
-		return (0);
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	new->next = *lst;
+	*lst = new;
 }
