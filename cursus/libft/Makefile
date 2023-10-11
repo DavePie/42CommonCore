@@ -26,4 +26,6 @@ clean:
 fclean: clean
 	$(RM) $(BINARY)
 
+re: fclean all
+
 .PHONY: clean fclean all bonus
