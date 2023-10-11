@@ -6,13 +6,11 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:55:11 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 15:10:05 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:58:45 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

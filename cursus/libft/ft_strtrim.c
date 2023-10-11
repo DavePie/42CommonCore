@@ -6,15 +6,12 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:02:10 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 13:58:02 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:56:45 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-char	*ft_strchr(const char *s, int c);
-
-size_t	ft_strlen(const char *s);
+#include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

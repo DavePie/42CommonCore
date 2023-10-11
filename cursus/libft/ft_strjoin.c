@@ -6,13 +6,12 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:36:17 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 13:56:29 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:57:18 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *s);
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

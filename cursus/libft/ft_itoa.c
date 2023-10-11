@@ -6,13 +6,11 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:27:39 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 13:59:18 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:59:32 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size);
+#include "libft.h"
 
 char	*ft_itoa(int n)
 {

@@ -6,14 +6,12 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 10:52:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 13:46:03 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:59:56 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 #include <limits.h>
-
-void	ft_bzero(void *s, size_t n);
 
 void	*ft_calloc(size_t count, size_t size)
 {

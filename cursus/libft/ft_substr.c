@@ -6,14 +6,12 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:58:07 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/09 16:45:28 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:56:25 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t count, size_t size);
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start,
 size_t len)

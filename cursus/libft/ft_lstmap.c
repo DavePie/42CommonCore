@@ -6,14 +6,11 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:47:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 16:15:33 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:59:04 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-t_list	*ft_lstnew(void *content);
-void	ft_lstclear(t_list **lst, void (*del)(void*));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 {

@@ -6,15 +6,11 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:03:56 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 14:12:16 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:57:54 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	ft_putchar_fd(char c, int fd);
-
-char	*ft_itoa(int n);
+#include "libft.h"
 
 static void	ft_recur_nbr(long n, int fd)
 {

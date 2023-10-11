@@ -6,13 +6,12 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 11:41:55 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/10 16:49:26 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:57:27 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *s);
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
