@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:40:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/11 17:11:51 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:18:58 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	ft_printf(const char *format, ...)
 	return (0);
 }
 
-static int process_convert(const char *format, int *stars)
+static int process_convert(const char *format, int *stars, )
 {
 	int		endI;
 	char	ftype;
