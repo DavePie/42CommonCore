@@ -6,7 +6,7 @@ BCFILES	:= $(wildcard *.c)
 CFILES	:= $(filter-out $(wildcard ft_lst*.c), $(BCFILES))
 OBJECTS	:= $(patsubst %.c,%.o,$(CFILES))
 BOBJECTS:= $(patsubst %.c,%.o,$(BCFILES))
-LIB		:= ar rc
+LIB		:= ar -rcs
 RM		:= rm -f
 
 all: $(BINARY)
