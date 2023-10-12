@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:40:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/12 11:36:10 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:20:12 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,9 @@
 
 #include <stdio.h>
 #include "ft_printf.h"
-typedef struct s_convert_spec
-{
-	va_list	ap;
-	// int		s_in;
-	// int		a_in;
-	size_t	wid;
-	size_t	prec;
-	char	conv;
-	int		zero;
-	int		minus;
-}	t_convert_spec;
+
+int		ft_isdigit(int c);
+char	*ft_strchr(const char *s, int c);
 
 /**
  * Gets index of the end of the conversion
@@ -60,34 +52,13 @@ typedef struct s_convert_spec
 static unsigned int	get_end(const char *format)
 {
 	int	i;
-
 	i = 0;
-	while (format[i])//&& (ft_isdigit(format[i]) || ft_strchr("-.*", format[i])))
+	while (format[i] && (ft_isdigit(format[i]) || ft_strchr("-.*", format[i])))
+		i++;
+	if (format[i] && ft_strchr("cspdiuxX", format[i]))
 		i++;
 	return (i);
 }
-
-/**
- * @brief Returns the number of additional parameters needed to format a string
- * 
- * @param format The string to format
- * @return unsigned int (number of *) until the end of the conversion
- */
-static unsigned int	count_stars(const char *format)
-{
-	int	n;
-	int	end;
-
-	end = get_end(format);
-	n = 0;
-	while (end-- > 0)
-		if (*format++ == '*')
-			n++;
-	return (n);
-}
-
-static 
-
 
 /*
 %c : unsigned char (no precision?)
@@ -108,13 +79,13 @@ static
  * @param ap The parameter to write
  * @return int (The length of the string)
  */
-int	write_type(t_convert_spec *param, va_list ap)
+static int	write_type(t_printf *param, va_list ap)
 {
 	char	c;
 
 	c = param->conv;
 	if (c == 'c')
-		return write_char(va_arg(ap, char), param);
+		return write_char((char)va_arg(ap, int), param);
 	if (c == 'd' || c == 'i')
 		return write_int(va_arg(ap, int), param);
 	if (c == 's')
@@ -136,42 +107,79 @@ int	write_type(t_convert_spec *param, va_list ap)
  * 
  * @param format The format string
  * @param ap The parameters
- * @return t_convert_spec* (a struct containing the fields)
+ * @return t_printf* (a struct containing the fields)
  */
-static t_convert_spec*	extract_param(const char *format, va_list ap)
+static t_printf*	extract_param(const char *format, va_list ap)
 {
-	t_convert_spec*	vals;
+	t_printf*	vals;
+	int			end;
+	int			i;
 
-	vals = (t_convert_spec*)malloc(sizeof(t_convert_spec));
+	// printf("Started at %c\n", *format);
+	i = -1;
+	vals = (t_printf*)malloc(sizeof(t_printf));
 	if (!vals)
 		return (0);
-	
+	end = get_end(format);
+	vals->conv = format[end - 1];
+	vals->prec = -1;
+	vals->wid = 0;
+	vals->minus = 0;
+	vals->zero = 0;
+	int curNum = 0;
+	int prevDot = 0;
+	while (++i < end)
+	{
+		// printf("cur num %d, cur prec %d, prevDot%d\n", curNum, vals->prec, prevDot);
+		if (!ft_isdigit(format[i]))
+		{
+			if (format[i] == '*'){
+			curNum = va_arg(ap, int);
+			// printf("\nExtracted %d\n", curNum);
 
-
-	// unsigned int num_star = count_stars(format);
-	// int *stars = (int *)malloc(sizeof(int) * num_star);
-	// int i = -1;
-	// while (++i < num_star)
-	// 	stars[i] = va_arg(ap, int);
-	// total += write_type(param, ap);
-	// endI = get_end(format);
-	// ftype = format[endI];
-
-	
+		}
+			if (prevDot){
+				vals->prec = curNum;
+				// printf("\Set prec %d\n", curNum);
+			}
+			else if (curNum){
+				vals->wid = curNum;
+				// printf("\Set wid %d\n", curNum);
+			}
+			curNum = 0;
+			prevDot = 0;
+		} else if (format[i] == '0' && !prevDot && !ft_isdigit(format[i-1]))
+			vals->zero = 1;
+		else
+			curNum = curNum * 10 + (format[i] - '0');
+		if (format[i] == '.')
+		{
+			prevDot = 1;
+			vals->prec = 0;
+		}
+		else if (format[i] == '-')
+			vals->minus = 1;
+	}
+	if (vals->minus)
+		vals->zero = 0;	
 	return (vals);
 }
 
 static int	process_convert(const char *format, va_list ap)
 {
-	t_convert_spec* vals;
+	t_printf* vals;
 	int		len;
 
-	format++;
 	len = 0;
 	vals = extract_param(format, ap);
 	if (vals)
 	{
 		len = write_type(vals, ap);
+	// 	printf("\nconversion result for %c:\n", vals->conv);
+	// printf("zero: %d\n", vals->zero);
+	// printf("minus: %d\n", vals->minus);
+	// printf("prec: %d\n", vals->prec);
+	// printf("width: %d\n", vals->wid);
 		free(vals);
 	}
 	return (len);
@@ -195,11 +203,14 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			format ++;
 			total += process_convert(format, ap);
+			//printf("get end is %d\n", get_end(format + 1));
 			format += get_end(format);
 		}
 		else
 		{
+			write(1, format, 1);
 			format++;
 			total++;
 		}
@@ -210,7 +221,7 @@ int	ft_printf(const char *format, ...)
 
 int main()
 {
-	printf("4: |%.1s%.1s%.1s%.1s%.1s%.1s))))|\n", (char *)0, (char *)0, (char *)0, (char *)0, (char *)0, (char *)0, (char *)0, (char *)0);
+	// printf("4: |%.1s%.1s%.1s%.1s%.1s%.1s))))|\n", (char *)0, (char *)0, (char *)0, (char *)0, (char *)0, (char *)0, (char *)0, (char *)0);
 	//ft_printf("ok","now", 123);
 	// printf("1: |%5d%%\\$d|", 12, 24);
 	// printf("\n");
@@ -220,16 +231,27 @@ int main()
 	// printf("\n");
 	// printf("4: |%7.5d|",-1234);
 	// printf("\n");
-	printf("5: |%7.3s|\n","1234", "abcdef");
-	// printf("\n");
-	printf("6: |%*****04.2d|\n", 1,1,1,1,1,1234);
-	printf("7: |%.0x|\n", 0);
-	printf("8: |%.0X|\n", 0);
-	printf("9: |%.0d|\n", 1);
+	// printf("5: |%7.3s|\n","1234", "abcdef");
+	// // printf("\n");
+	// printf("6: |%*****04.2d|\n", 1,1,1,1,1,1234);
+	// printf("7: |%.0x|\n", 0);
+	// printf("8: |%.0X|\n", 0);
+	// printf("9: |%.0d|\n", 1);
+	// printf("10: |%*..0d|\n", 2, 1);
 	// printf("\n");
 	// printf("6: |%.-20f|", 12.565);
 	// 	printf("\n");
 	// printf("6: |%-20f|", 12.565);
 	// printf("\n\n");
+	// char a[] = "%00**-d|\n";
+	//ft_printf("4: |%-3.2s|\n","2");
+	   printf("n: |%06.2d|\n",2222);
+	   ft_printf("n: |%06.2d|\n",2222);
+	   printf("n: |%06d|\n",2222);
+	   
+	   printf("s: |%-6.5s|\n","2222");
+	   printf("n: |%-6.2d|\n",2222);
+	   printf("s: |%-6.2s|\n","2222");
+	// printf("test%3.*0s %d|\n", 2, "5678", 6);
 	return 0;
 }

@@ -1,6 +1,6 @@
 CFILES	:= ft_printf.c write_types.c
 OBJECTS	:= $(patsubst %.c,%.o,$(CFILES))
-LIB		:= gcc -W -W -W
+LIB		:= gcc -Wall -Werror -Wextra
 RM		:= rm -f
 BINARY	:= ft_printf
 
