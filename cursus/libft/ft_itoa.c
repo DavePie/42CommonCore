@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:27:39 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/11 17:59:32 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:36:53 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_itoa(int n)
 	if (!s)
 		return (0);
 	s[--len] = '\0';
-	while ((len >= 0 && n >= 0) || len > 0)
+	while ((len > 0 && n >= 0) || len > 1)
 	{
 		s[--len] = (char)(temp % 10 + '0');
 		temp /= 10;

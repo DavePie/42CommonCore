@@ -1,21 +1,26 @@
 CC		:= gcc
 INCDIR	:= .
 CFLAGS	:= -Wall -Wextra -Werror -I$(INCDIR)
-BINARY	:= libft.a
-BCFILES	:= $(wildcard *.c)
-CFILES	:= $(filter-out $(wildcard ft_lst*.c), $(BCFILES))
+NAME	:= libft.a
+BCFILES	:= ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
+			ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
+CFILES	:= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c \
+            ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c \
+            ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c \
+            ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
+            ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 OBJECTS	:= $(patsubst %.c,%.o,$(CFILES))
 BOBJECTS:= $(patsubst %.c,%.o,$(BCFILES))
 LIB		:= ar -rcs
 RM		:= rm -f
 
-all: $(BINARY)
+all: $(NAME)
 
-$(BINARY): $(OBJECTS)
+$(NAME): $(OBJECTS)
 	$(LIB) $@ $^
 
-bonus: $(BINARY) ${BOBJECTS}
-	$(LIB) -r $(BINARY) ${BOBJECTS}
+bonus: $(NAME) ${BOBJECTS}
+	$(LIB) $(NAME) ${BOBJECTS}
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c -o $@ $^
@@ -24,7 +29,7 @@ clean:
 	$(RM) $(OBJECTS) $(BOBJECTS)
 
 fclean: clean
-	$(RM) $(BINARY)
+	$(RM) $(NAME)
 
 re: fclean all
 
