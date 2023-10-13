@@ -5,137 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 10:21:25 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/12 18:19:56 by dvandenb         ###   ########.fr       */
+/*   Created: 2023/10/13 15:57:08 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/13 16:03:28 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-char			*ft_itoa(int n);
-size_t			ft_strlen(const char *s);
-void			*ft_calloc(size_t count, size_t size);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
-char	*add_to_side(char *str, int nlen, char pad, int left)
+int	write_char(char c, t_printf *param)
 {
-	int		l;
-	char	*ans;
-	char	*cur;
-
-	l = ft_strlen(str);
-	if (l >= nlen)
-		return (str);
-	ans = (char *)malloc(sizeof(char) * nlen);
-	cur = ans;
-	if (!cur)
-		return (str);
-	if (left)
-		ft_strlcpy(cur += l, str, nlen);
-	while (l-- > nlen)
-		*cur++ = pad;
-	if (!left)
-		ft_strlcpy(cur += l, str, nlen);
-	free(str);
-	return (ans);
+	write(1, &c, 1);
+	param->conv++;
+	return (1);
 }
 
-char	*add_zeros()
-
-int	write_type(char *str, t_printf* param)
+int	write_int(long n, t_printf *param)
 {
-	int	l;
-	char	pad;
-	int	i;
-	// printf("WE HAVE %d", param->wid);
-	i = 0;
-	pad = ' ';
-	if (param->zero)
-		pad = '0';
-	l = ft_strlen(str);
-	if (param->prec != -1 && param->prec < l)
-		l = param->prec;
-	if (param->minus)
-		write(1, str, l);
-	while (i++ + l < param->wid){
-		write(1, &pad, 1);
-		
-	}
-	if (!param->minus)
-		write(1, str, l);
-	//write(1, "|", 1);
-	free(str);
-	if (l > param->wid)
-		return (l);
-	return (param->wid);
+	int	is_neg;
+
+	is_neg = n < 0;
+	if (n < 0)
+		n *= -1;
+	return (write_num(param, ft_ltoa(n, "0123456789",
+				param->prec != -1, is_neg)));
 }
 
-int	write_char(char c, t_printf* param)
+int	write_hex(unsigned long n, t_printf *param, int is_upper)
 {
-	c++;
-	param->conv = 0;
-	return 0;
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	if (is_upper)
+		hex = "0123456789ABCDEF";
+	return (write_num(param, ft_ltoa(n, hex, param->prec != -1, 0)));
 }
 
-/**
- * Possibilities:
- * string: trim (prec)(remove right)
- * string: buff (wid)(space)(add left or right)
- * num: buff (prec)(zeroes)(only left?)(after minus)
- * num: buff (wid)
- * 	- if no prec & no minus % is zero, then zeroes left after minus
- *  - space left or right
-*/
-// buff zeroes only for numbers? check char
-
-int	write_int(int n, t_printf* param)
+int	write_ptr(void *p, t_printf *param)
 {
-	char	*str;
-
-	//printf("\nn is %d\n", n);
-	if(param->prec != -1)
-		param->zero = 0;
-	if (n == 0 && param->prec == 0)
-		str = ft_calloc(1, sizeof(char));
-	else if (n < 0 && (param->zero || param->prec))
-	{
-		write(1, "-", 1);
-		str = ft_itoa(-n);// OVERFLOW ERROR :/
-		param->wid--;
-	}
-	else
-		str = ft_itoa(n);
-	if (param->prec != -1)
-	{
-		str = add_to_side(str, param->prec, '0', 0);
-		str = add_to_side(str, param->wid, ' ', !param->minus);
-	}
-	if (str){
-		write(1, str, ft_strlen(str));
-		free(str);
-	}
-	return (ft_strlen(str));
+	write(1, "0x", 2);
+	param->wid -= 2;
+	return (2 + write_num(
+			param, ft_ltoa((unsigned long)p,
+				"0123456789abcdef", param->prec != -1, 0)));
 }
 
-
-
-int	write_ptr(void* p, t_printf* param)
+int	write_str(char *c, t_printf *param)
 {
-	p++;
-	param->conv = 0;
-	return 0;
+	if (!c)
+		c = "(null)";
+	return (write_strs(c, param));
 }
-
-int	write_hex(int n, t_printf* param, int is_upper)
-{
-	n++;
-	param->conv = 0;
-	is_upper++;
-	return 0;
-}
-
-int	write_str(char* c, t_printf* param)
-{
-	return write_type(c, param);
-}
-

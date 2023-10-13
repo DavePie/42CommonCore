@@ -1,23 +1,28 @@
-CFILES	:= ft_printf.c write_types.c
+CFILES	:= ft_printf.c write_types.c ft_print_helper.c write_helper.c
 OBJECTS	:= $(patsubst %.c,%.o,$(CFILES))
-LIB		:= gcc -Wall -Werror -Wextra
+LIB		:= ar -rcs
 RM		:= rm -f
-BINARY	:= ft_printf
+NAME	:= libftprintf.a
+CC		:= gcc
+INCDIR	:= .
+CFLAGS	:= -Wall -Wextra -Werror -I$(INCDIR)
 
-all: $(BINARY)
 
-$(BINARY): 
-	$(LIB) *.c libft.a
+all: $(NAME)
+
+$(NAME): $(OBJECTS)
+	cp libft.a $(NAME)
+	$(LIB) $(NAME) $(OBJECTS)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c -o $@ $^
 
 clean:
-	$(RM) $(OBJECTS) $(BOBJECTS)
+	$(RM) $(OBJECTS)
 
 fclean: clean
-	$(RM) $(BINARY)
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean all
+.PHONY: clean fclean all re
