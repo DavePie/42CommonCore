@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:47:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/11 17:59:04 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:36:22 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 		if (!nlst)
 			nlst = cur;
 		if (!cur)
-			ft_lstclear(&lst, del);
+			ft_lstclear(&nlst, del);
 		if (!cur)
 			return (0);
 		cur->content = f(lst->content);
