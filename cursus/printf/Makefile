@@ -10,6 +10,8 @@ CFLAGS	:= -Wall -Wextra -Werror -I$(INCDIR)
 
 all: $(NAME)
 
+bonus: all
+
 $(NAME): $(OBJECTS)
 	cp libft.a $(NAME)
 	$(LIB) $(NAME) $(OBJECTS)

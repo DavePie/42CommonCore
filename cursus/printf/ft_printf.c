@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:40:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 17:07:07 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:24:13 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ static t_printf	*create_new_param(char conv, int *cur_num, int *prev_dot)
 	vals->wid = 0;
 	vals->minus = 0;
 	vals->zero = 0;
-	cur_num = 0;
-	prev_dot = 0;
+	*cur_num = 0;
+	*prev_dot = 0;
 	return (vals);
 }
 
 static void	store_num(int is_digit, int *cur_num, int *prev_dot, t_printf *vals)
 {
+	if (*prev_dot)
+		vals->prec = *cur_num;
+	else if (*cur_num)
+		vals->wid = *cur_num;
 	if (!is_digit)
 	{
 		*cur_num = 0;
 		*prev_dot = 0;
 	}
-	if (*prev_dot)
-		vals->prec = *cur_num;
-	else if (*cur_num)
-		vals->wid = *cur_num;
 }
 
 /**

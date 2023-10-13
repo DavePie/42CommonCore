@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 15:57:08 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 16:03:28 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:20:14 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,26 @@
 
 int	write_char(char c, t_printf *param)
 {
-	write(1, &c, 1);
-	param->conv++;
-	return (1);
+	int		l;
+	char	pad;
+	int		i;
+
+	i = 0;
+	pad = ' ';
+	if (param->zero)
+		pad = '0';
+	l = 1;
+	if (param->prec != -1 && param->prec < l)
+		l = param->prec;
+	if (param->minus)
+		write(1, &c, l);
+	while (i++ + l < param->wid)
+		write(1, &pad, 1);
+	if (!param->minus)
+		write(1, &c, l);
+	if (l > param->wid)
+		return (l);
+	return (param->wid);
 }
 
 int	write_int(long n, t_printf *param)

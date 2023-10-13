@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:21:25 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 17:02:25 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:24:58 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,28 @@ char	*add_to_side(char *str, int nlen, char pad, int left)
 	cur = ans;
 	if (!cur)
 		return (str);
+	ans[nlen] = '\0';
 	if (!left)
-		ft_strlcpy(cur += l, str, nlen + 1);
-	while (nlen-- > l)
+	{
+		ft_strlcpy(cur, str, nlen + 1);
+		cur += l;
+	}
+	while (nlen > l++)
 		*cur++ = pad;
 	if (left)
-		ft_strlcpy(cur += l, str, nlen + 1);
+		ft_strlcpy(cur, str, nlen + 1);
 	free(str);
 	return (ans);
 }
 
-char	*add_zeros(char *num, int n)
+char	*add_zeros(char *num, int n, int is_prec)
 {
 	int		l;
 	char	*ans;
 	char	*cur;
 
 	l = ft_strlen(num);
+	n += is_prec && (num[0] == '-');
 	if (n <= l)
 		return (num);
 	ans = (char *)malloc(sizeof(char) * (n + 1));
@@ -92,11 +97,11 @@ int	write_num(t_printf *param, char *str)
 		param->zero = 0;
 	if (param->prec != -1)
 	{
-		str = add_zeros(str, param->prec);
+		str = add_zeros(str, param->prec, 1);
 		str = add_to_side(str, param->wid, ' ', !param->minus);
 	}
 	else if (param->zero)
-		str = add_zeros(str, param->wid);
+		str = add_zeros(str, param->wid, 0);
 	else
 		str = add_to_side(str, param->wid, ' ', !param->minus);
 	final_length = ft_strlen(str);

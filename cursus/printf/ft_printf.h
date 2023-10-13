@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:22:02 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 17:06:55 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:10:51 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_ltoa(unsigned long n, char *b, int hide_zero, int is_neg);
 int				write_num(t_printf *param, char *str);
 int				write_strs(char *str, t_printf *param);
-char			*add_zeros(char *num, int n);
+char			*add_zeros(char *num, int n, int is_prec);
 char			*add_to_side(char *str, int nlen, char pad, int left);
 int				write_type(t_printf *param, va_list ap);
 unsigned int	get_end(const char *format);
