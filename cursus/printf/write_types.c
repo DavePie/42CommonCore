@@ -40,6 +40,7 @@ char	*add_to_side(char *str, int nlen, char pad, int left)
 	return (ans);
 }
 
+char	*add_zeros()
 
 int	write_type(char *str, t_printf* param)
 {
@@ -76,6 +77,17 @@ int	write_char(char c, t_printf* param)
 	return 0;
 }
 
+/**
+ * Possibilities:
+ * string: trim (prec)(remove right)
+ * string: buff (wid)(space)(add left or right)
+ * num: buff (prec)(zeroes)(only left?)(after minus)
+ * num: buff (wid)
+ * 	- if no prec & no minus % is zero, then zeroes left after minus
+ *  - space left or right
+*/
+// buff zeroes only for numbers? check char
+
 int	write_int(int n, t_printf* param)
 {
 	char	*str;
@@ -93,18 +105,14 @@ int	write_int(int n, t_printf* param)
 	}
 	else
 		str = ft_itoa(n);
-	if (param->prec)
+	if (param->prec != -1)
 	{
 		str = add_to_side(str, param->prec, '0', 0);
-		if (param->minus)
-			str = add_to_side(str, param->wid, ' ', 0);
-		else
-			str = add_to_side(str, param->wid, ' ', 1);
+		str = add_to_side(str, param->wid, ' ', !param->minus);
 	}
-	
 	if (str){
-		free(str);
 		write(1, str, ft_strlen(str));
+		free(str);
 	}
 	return (ft_strlen(str));
 }
