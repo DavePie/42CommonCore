@@ -59,11 +59,22 @@ int	write_hex(unsigned long n, t_printf *param, int is_upper)
 
 int	write_ptr(void *p, t_printf *param)
 {
-	write(1, "0x", 2);
-	param->wid -= 2;
-	return (2 + write_num(
-			param, ft_ltoa((unsigned long)p,
-				"0123456789abcdef", param->prec != -1, 0)));
+	char	*hex;
+	char	*ans;
+	int		len;
+
+	hex = ft_ltoa((unsigned long)p,
+			"0123456789abcdef", param->prec != -1, 0);
+	if (!hex)
+		return (0);
+	len = ft_strlen(hex) + 3;
+	ans = malloc(len * sizeof(char));
+	if (!ans)
+		return (0);
+	ft_strlcpy(ans, "0x", 3);
+	ft_strlcpy(ans + 2, hex, len);
+	free(hex);
+	return (2 + write_num(param, ans));
 }
 
 int	write_str(char *c, t_printf *param)
