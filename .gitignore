@@ -4,3 +4,4 @@ a.out
 .vscode/settings.json
 *.o
 cursus/printf/libftprintf.a
+.vscode/c_cpp_properties.json
