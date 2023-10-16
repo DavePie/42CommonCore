@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 11:13:45 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/15 11:42:18 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/16 11:52:56 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ typedef struct s_buffers
 	int					end;
 }	t_buffers;
 char	*get_next_line(int fd);
+int		reallojoin(char **dest, int cur_size, char *src, int src_size);
+int		remove_fd(t_buffers **begin_list, int fd);
 #endif

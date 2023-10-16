@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 11:11:14 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/15 11:41:56 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/16 11:51:46 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ t_buffers	*get_t_buffer(int fd, t_buffers **input)
 	new = (t_buffers *)malloc(sizeof(t_buffers));
 	if (!new)
 		return (0);
-	new->fd = fd;
-	new->index = BUFFER_SIZE;
-	new->buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE);
-	new->end = BUFFER_SIZE;
-	new->next = 0;
+	*new = (t_buffers){.fd = fd, .index = BUFFER_SIZE, .end = BUFFER_SIZE,
+		.buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE)};
+	if (!new->buffer)
+	{
+		free(new);
+		return (0);
+	}
 	if (b)
 		b->next = new;
 	else
@@ -53,29 +55,7 @@ t_buffers	*get_t_buffer(int fd, t_buffers **input)
 	return (new);
 }
 
-int	reallojoin(char **dest, int cur_size, char *src, int src_size)
-{
-	char	*temp;
-	int		i;
-
-	i = -1;
-	temp = (char *)malloc(sizeof(char) * (cur_size + src_size + 1));
-	if (!temp)
-		return (0);
-	while (++i < cur_size)
-		temp[i] = (*dest)[i];
-	while (i < cur_size + src_size)
-	{
-		temp[i] = src[i - cur_size];
-		i++;
-	}
-	temp[i] = '\0';
-	free(*dest);
-	*dest = temp;
-	return (cur_size + src_size);
-}
-
-int	add_buffer_until_newline(t_buffers *b, int *lindex, int *len, char **line)
+int	add_buff(t_buffers *b, int *lindex, int *len, char **line)
 {
 	*lindex = newline_i(b->buffer + b->index, b->end - b->index);
 	*line = malloc(0);
@@ -83,23 +63,49 @@ int	add_buffer_until_newline(t_buffers *b, int *lindex, int *len, char **line)
 	{
 		*len = reallojoin(line, *len, b->buffer + b->index, b->end - b->index);
 		if (!*len)
+		{
+			free(*line);
 			return (0);
-		b->end = read(b->fd, b->buffer, b->end);
+		}
+		b->end = read(b->fd, b->buffer, BUFFER_SIZE);
+		if (b->end == -1)
+		{
+			free(*line);
+			return (0);
+		}
 		b->index = 0;
 		*lindex = newline_i(b->buffer, b->end);
 	}
 	return (1);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line_main(t_buffers **file_buffer, t_buffers **b)
 {
-	static t_buffers	*file_buffer;
-	t_buffers			*b;
 	int					lindex;
 	char				*line;
 	int					len;
 
 	len = 0;
+	if (((!(*b)->end || (*b)->end == -1) || !add_buff(*b, &lindex, &len, &line))
+		&& remove_fd(file_buffer, (*b)->fd))
+		return (0);
+	if (!(*b)->end)
+		return (line);
+	if (!reallojoin(&line, len, (*b)->buffer + (*b)->index, lindex + 1)
+		&& remove_fd(file_buffer, (*b)->fd))
+	{
+		free(line);
+		return (0);
+	}
+	(*b)->index = (*b)->index + lindex + 1;
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	static t_buffers	*file_buffer;
+	t_buffers			*b;
+
 	b = get_t_buffer(fd, &file_buffer);
 	if (!b)
 		return (0);
@@ -108,17 +114,14 @@ char	*get_next_line(int fd)
 		b->end = read(fd, b->buffer, BUFFER_SIZE);
 		b->index = 0;
 	}
-	if (!b->end)
-		return (0);
-	if (!add_buffer_until_newline(b, &lindex, &len, &line))
-		return (0);
-	if (!b->end)
-		return (line);
-	reallojoin(&line, len, b->buffer + b->index, lindex + 1);
-	b->index = b->index + lindex + 1;
-	return (line);
+	return (get_next_line_main(&file_buffer, &b));
 }
 
+// int main()
+// {
+// 	get_next_line(23);
+// 	return (0);
+// }
 // int	main()
 // {
 // 	int file = open("get_next_line.c", O_RDONLY);
