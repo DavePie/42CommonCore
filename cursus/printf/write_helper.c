@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:21:25 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 18:24:58 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/16 09:47:00 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*add_zeros(char *num, int n, int is_prec)
 	char	*cur;
 
 	l = ft_strlen(num);
-	n += is_prec && (num[0] == '-');
+	n += (is_prec && (num[0] == '-'));
 	if (n <= l)
 		return (num);
 	ans = (char *)malloc(sizeof(char) * (n + 1));
@@ -140,5 +140,9 @@ int	write_type(t_printf *param, va_list ap)
 		return (write_hex(va_arg(ap, unsigned int), param, 1));
 	if (c == 'p')
 		return (write_ptr(va_arg(ap, void *), param));
+	if (c == '%')
+		return (write_char('%', param));
+	if (c == '%')
+		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 15:57:08 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 18:20:14 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/16 09:52:35 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	write_char(char c, t_printf *param)
 	if (param->zero)
 		pad = '0';
 	l = 1;
-	if (param->prec != -1 && param->prec < l)
-		l = param->prec;
 	if (param->minus)
 		write(1, &c, l);
 	while (i++ + l < param->wid)
@@ -74,7 +72,7 @@ int	write_ptr(void *p, t_printf *param)
 	ft_strlcpy(ans, "0x", 3);
 	ft_strlcpy(ans + 2, hex, len);
 	free(hex);
-	return (2 + write_num(param, ans));
+	return (write_num(param, ans));
 }
 
 int	write_str(char *c, t_printf *param)

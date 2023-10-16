@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:27:39 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 17:06:18 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/16 09:45:00 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ unsigned int	get_end(const char *format)
 	i = 0;
 	while (format[i] && (ft_isdigit(format[i]) || ft_strchr("-.*", format[i])))
 		i++;
-	if (format[i] && ft_strchr("cspdiuxX", format[i]))
+	if (format[i] && ft_strchr("cspdiuxX%", format[i]))
 		i++;
 	return (i);
 }

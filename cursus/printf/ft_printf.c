@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:40:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 18:24:13 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/16 09:52:24 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '%' && ++total && write(1, format, 1) && format++)
-				continue ;
 			total += process_convert(format, ap);
 			format += get_end(format);
 			continue ;
