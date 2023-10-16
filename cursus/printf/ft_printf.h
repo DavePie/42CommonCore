@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:22:02 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/13 18:10:51 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/16 09:54:51 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
 /**
  * @brief 
  * size_t	wid;
