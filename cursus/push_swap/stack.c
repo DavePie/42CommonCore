@@ -1,0 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/16 17:46:44 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/16 18:12:46 by dvandenb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+t_node	*add_front(t_stack *s, t_node *new)
+{
+	if (!s->start)
+	{
+		s->start = new;
+		s->end = new;
+		return (new);
+	}
+	s->start->prev = new;
+	new->prev = 0;
+	new->next = s->start;
+	s->start = new;
+	return (new);
+}
+
+t_node	*add_back(t_stack *s, t_node *new)
+{
+	if (!s->start)
+	{
+		s->start = new;
+		s->end = new;
+		return (new);
+	}
+	s->end->next = new;
+	new->prev = s->end;
+	new->next = 0;
+	s->end = new;
+	return (new);
+}
+
+t_node	*remove_front(t_stack *s)
+{
+	t_node	*temp;
+	
+	if (!s->start)
+		return (0);
+	temp = s->start;
+	
+	if (!temp->next)
+	{
+		s->end = 0;
+		s->start = 0;
+		return (temp);
+	}
+	temp->next->prev = 0;
+	s->start = temp->next;
+	temp->next = 0;
+	return (temp);
+}
+
+t_node	*remove_back(t_stack *s)
+{
+	t_node	*temp;
+	
+	if (!s->end)
+		return (0);
+	temp = s->end;
+	
+	if (!temp->prev)
+	{
+		s->start = 0;
+		s->end = 0;
+		return (temp);
+	}
+	temp->prev->next = 0;
+	s->end = temp->prev;
+	temp->prev = 0;
+	return (temp);
+}
+
+void	*swap(t_node *an, t_node *bn)
+{
+	int	i;
+
+	i = an->i;
+	an->i = bn->i;
+	bn->i = i;
+}
