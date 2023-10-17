@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 15:57:08 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/16 09:52:35 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:13:38 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,38 @@ int	write_int(long n, t_printf *param)
 	if (n < 0)
 		n *= -1;
 	return (write_num(param, ft_ltoa(n, "0123456789",
-				param->prec != -1, is_neg)));
+				param, is_neg)));
 }
 
 int	write_hex(unsigned long n, t_printf *param, int is_upper)
 {
+	char	*base;
 	char	*hex;
+	char	*ans;
+	int		len;
 
-	hex = "0123456789abcdef";
+	base = "0123456789abcdef";
 	if (is_upper)
-		hex = "0123456789ABCDEF";
-	return (write_num(param, ft_ltoa(n, hex, param->prec != -1, 0)));
+		base = "0123456789ABCDEF";
+	hex = ft_ltoa(n, base, param, 0);
+	if (!hex)
+		return (0);
+	if (param->hash && n != 0)
+	{
+		len = ft_strlen(hex) + 3;
+		ans = malloc(len * sizeof(char));
+		if (!ans)
+			return (0);
+		if (is_upper)
+			ft_strlcpy(ans, "0X", 3);
+		else
+			ft_strlcpy(ans, "0x", 3);
+		ft_strlcpy(ans + 2, hex, len);
+		free(hex);
+	}
+	else
+		ans = hex;
+	return (write_num(param, ans));
 }
 
 int	write_ptr(void *p, t_printf *param)
@@ -62,7 +83,7 @@ int	write_ptr(void *p, t_printf *param)
 	int		len;
 
 	hex = ft_ltoa((unsigned long)p,
-			"0123456789abcdef", param->prec != -1, 0);
+			"0123456789abcdef", param, 0);
 	if (!hex)
 		return (0);
 	len = ft_strlen(hex) + 3;

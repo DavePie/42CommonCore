@@ -6,11 +6,23 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:46:44 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/16 18:12:46 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:11:46 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_node *new_node(int i)
+{
+	t_node	*new;
+
+	new = malloc(sizeof(t_node));
+	if (!new)
+		return (0);
+	new->i = i;
+	new->next = 0;
+	return (new);
+}
 
 t_node	*add_front(t_stack *s, t_node *new)
 {
@@ -82,7 +94,7 @@ t_node	*remove_back(t_stack *s)
 	return (temp);
 }
 
-void	*swap(t_node *an, t_node *bn)
+void	swap(t_node *an, t_node *bn)
 {
 	int	i;
 

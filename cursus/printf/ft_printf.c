@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:40:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/16 09:52:24 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:27:37 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_printf	*create_new_param(char conv, int *cur_num, int *prev_dot)
 	vals->wid = 0;
 	vals->minus = 0;
 	vals->zero = 0;
+	vals->space = 0;
 	*cur_num = 0;
 	*prev_dot = 0;
 	return (vals);
@@ -72,6 +73,8 @@ static t_printf	*extract_param(const char *format, va_list ap)
 			vals->prec = 0;
 		else if (*format == '-')
 			vals->minus = 1;
+		vals->hash = vals->hash || *format == '#';
+		vals->space = vals->space || *format == ' ';
 		format++;
 	}
 	if (vals->minus)
@@ -125,3 +128,10 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (total);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	printf("%d,", ft_printf(" % d \n", 0));
+// 	printf("%d,", printf(" % d \n", 0));
+// }

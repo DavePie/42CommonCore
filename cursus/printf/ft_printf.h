@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:22:02 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/16 09:54:51 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:14:06 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_printf
 	char	conv;
 	int		zero;
 	int		minus;
+	int		hash;
+	int		space;
 }	t_printf;
 
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);
@@ -45,7 +47,7 @@ size_t			ft_strlen(const char *s);
 void			*ft_calloc(size_t count, size_t size);
 int				ft_isdigit(int c);
 char			*ft_strchr(const char *s, int c);
-char			*ft_ltoa(unsigned long n, char *b, int hide_zero, int is_neg);
+char			*ft_ltoa(unsigned long n, char *b, t_printf *param, int is_neg);
 int				write_num(t_printf *param, char *str);
 int				write_strs(char *str, t_printf *param);
 char			*add_zeros(char *num, int n, int is_prec);
