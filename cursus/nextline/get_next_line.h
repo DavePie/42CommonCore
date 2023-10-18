@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 11:13:45 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/16 11:52:56 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:25:46 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_H
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include <stdlib.h>
 
 typedef struct s_buffers
