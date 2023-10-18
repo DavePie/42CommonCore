@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:21:25 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/16 09:47:00 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:44:43 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,28 @@ char	*add_zeros(char *num, int n, int is_prec)
 	int		l;
 	char	*ans;
 	char	*cur;
+	int		offset;
+	int		i;
 
+	i = 0;
+	offset = !!ft_strchr("-+ ", *num)
+		+ 2 * (!!ft_strchr(num, 'x') || !!ft_strchr(num, 'X'));
 	l = ft_strlen(num);
-	n += (is_prec && (num[0] == '-'));
+	n += offset * is_prec;
 	if (n <= l)
 		return (num);
 	ans = (char *)malloc(sizeof(char) * (n + 1));
 	cur = ans;
 	if (!ans)
 		return (0);
-	if (num[0] == '-')
-		*cur++ = '-';
+	while (i < offset)
+		*cur++ = num[i++];
 	while (n > l++)
 		*cur++ = '0';
-	l = ft_strlen(num);
-	ft_strlcpy(cur, (char *)(num + (num[0] == '-')), l + 1);
+	ft_strlcpy(cur, (char *)(num + offset), ft_strlen(num) + 1);
 	ans[n] = '\0';
 	free(num);
-	num = ans;
-	return (num);
+	return (ans);
 }
 
 int	write_strs(char *str, t_printf *param)

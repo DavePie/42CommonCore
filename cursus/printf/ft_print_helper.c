@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:27:39 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/17 18:28:45 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:20:30 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	*ft_ltoa(unsigned long n, char *b, t_printf *param, int is_neg)
 	int				base;
 
 	base = ft_strlen(b);
-	if ((param->prec != -1) && !n)
-		return (ft_calloc(1, sizeof(char)));
-	temp = n;
 	len = 1;
+	if ((param->prec == 0) && !n)
+		len--;
+	temp = n;
 	while (temp != 0 && len++)
 		temp /= base;
 	len += (n == 0) + (is_neg || param->space || param->plus);
@@ -36,13 +36,8 @@ char	*ft_ltoa(unsigned long n, char *b, t_printf *param, int is_neg)
 		s[--len] = b[n % base];
 		n /= base;
 	}
-	if (is_neg)
-		s[0] = '-';
-	else if (param->plus)
-		s[0] = '+';
-	else if (param->space)
-		s[0] = ' ';
-	
+	if (is_neg || param->plus || param->space)
+		s[0] = 45 * is_neg + !is_neg * (param->plus * 11 + 32);
 	return (s);
 }
 
@@ -64,4 +59,15 @@ unsigned int	get_end(const char *format)
 	if (format[i] && ft_strchr("cspdiuxX%", format[i]))
 		i++;
 	return (i);
+}
+
+void	set_param(const char *format, int *prev_dot, t_printf *vals)
+{
+	if (*format == '.' && ++*prev_dot)
+		vals->prec = 0;
+	else if (*format == '-')
+		vals->minus = 1;
+	vals->hash = (vals->hash || *format == '#');
+	vals->space = (vals->space || *format == ' ');
+	vals->plus = (vals->plus || *format == '+');
 }

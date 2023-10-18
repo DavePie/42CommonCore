@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:22:02 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/17 18:14:06 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:02:06 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
+
 /**
  * @brief 
  * size_t	wid;
@@ -55,4 +56,5 @@ char			*add_zeros(char *num, int n, int is_prec);
 char			*add_to_side(char *str, int nlen, char pad, int left);
 int				write_type(t_printf *param, va_list ap);
 unsigned int	get_end(const char *format);
+void			set_param(const char *format, int *prev_dot, t_printf *vals);
 #endif

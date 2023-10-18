@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:40:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/17 18:27:37 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:01:43 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static t_printf	*create_new_param(char conv, int *cur_num, int *prev_dot)
 	vals->zero = 0;
 	vals->space = 0;
 	vals->plus = 0;
+	vals->hash = 0;
 	*cur_num = 0;
 	*prev_dot = 0;
 	return (vals);
@@ -61,6 +62,8 @@ static t_printf	*extract_param(const char *format, va_list ap)
 
 	end = get_end(format);
 	vals = create_new_param(format[end - 1], &cur_num, &prev_dot);
+	if (!vals)
+		return (0);
 	while (0 < end--)
 	{
 		if (*format == '*')
@@ -70,13 +73,7 @@ static t_printf	*extract_param(const char *format, va_list ap)
 			vals->zero = 1;
 		else if (ft_isdigit(*format))
 			cur_num = cur_num * 10 + (*format - '0');
-		if (*format == '.' && ++prev_dot)
-			vals->prec = 0;
-		else if (*format == '-')
-			vals->minus = 1;
-		vals->hash = vals->hash || *format == '#';
-		vals->space = vals->space || *format == ' ';
-		vals->plus = vals->plus || *format == '+';
+		set_param(format, &prev_dot, vals);
 		format++;
 	}
 	if (vals->minus)
@@ -131,9 +128,12 @@ int	ft_printf(const char *format, ...)
 	return (total);
 }
 
-// #include <stdio.h>
 // int main()
 // {
-// 	printf("%d,", ft_printf(" % d \n", 0));
-// 	printf("%d,", printf(" % d \n", 0));
+// 	printf("(%d)", ft_printf("%#2.5X", 1));
+// 	printf("\n");
+// 	printf("(%d)", printf("%#2.5X", 1));
+// 		printf("\n");
+
+// 	printf("\n");
 // }
