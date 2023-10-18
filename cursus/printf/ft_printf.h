@@ -32,6 +32,7 @@ typedef struct s_printf
 	int		minus;
 	int		hash;
 	int		space;
+	int		plus;
 }	t_printf;
 
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);

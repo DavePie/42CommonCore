@@ -26,8 +26,7 @@ char	*ft_ltoa(unsigned long n, char *b, t_printf *param, int is_neg)
 	len = 1;
 	while (temp != 0 && len++)
 		temp /= base;
-	len += (is_neg || n == 0 || param->space);
-	len += (n == 0 && param->space);
+	len += (n == 0) + (is_neg || param->space || param->plus);
 	s = malloc(sizeof(char) * (len));
 	if (!s)
 		return (0);
@@ -39,6 +38,8 @@ char	*ft_ltoa(unsigned long n, char *b, t_printf *param, int is_neg)
 	}
 	if (is_neg)
 		s[0] = '-';
+	else if (param->plus)
+		s[0] = '+';
 	else if (param->space)
 		s[0] = ' ';
 	
@@ -58,7 +59,7 @@ unsigned int	get_end(const char *format)
 
 	i = 0;
 	while (format[i] && (ft_isdigit(format[i])
-			|| ft_strchr("-.*# ", format[i])))
+			|| ft_strchr("-.*# +", format[i])))
 		i++;
 	if (format[i] && ft_strchr("cspdiuxX%", format[i]))
 		i++;

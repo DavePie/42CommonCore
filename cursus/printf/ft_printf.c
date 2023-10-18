@@ -25,6 +25,7 @@ static t_printf	*create_new_param(char conv, int *cur_num, int *prev_dot)
 	vals->minus = 0;
 	vals->zero = 0;
 	vals->space = 0;
+	vals->plus = 0;
 	*cur_num = 0;
 	*prev_dot = 0;
 	return (vals);
@@ -75,6 +76,7 @@ static t_printf	*extract_param(const char *format, va_list ap)
 			vals->minus = 1;
 		vals->hash = vals->hash || *format == '#';
 		vals->space = vals->space || *format == ' ';
+		vals->plus = vals->plus || *format == '+';
 		format++;
 	}
 	if (vals->minus)
