@@ -7,13 +7,12 @@ CC		:= gcc
 INCDIR	:= .
 CFLAGS	:= -Wall -Wextra -Werror -I$(INCDIR)
 
-
 all: $(NAME)
 
 bonus: all
 
 $(NAME): $(OBJECTS)
-	cp libft.a $(NAME)
+	cp libft $(NAME)
 	$(LIB) $(NAME) $(OBJECTS)
 
 %.o:%.c
