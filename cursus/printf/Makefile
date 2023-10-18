@@ -6,26 +6,28 @@ NAME	:= libftprintf.a
 CC		:= gcc
 INCDIR	:= .
 CFLAGS	:= -Wall -Wextra -Werror -I$(INCDIR)
-LIBZ	:= libft
+LIBZ	:= ./libft/libft.a
 all: $(NAME)
 
 bonus: all
 
-$(NAME): $(OBJECTS)
+$(NAME): $(OBJECTS) $(LIBZ)
 	cp $(LIBZ) $(NAME)
 	$(LIB) $(NAME) $(OBJECTS)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c -o $@ $^
 
-libft:
-	make libft/Makefile
+$(LIBZ):
+	make -C libft
 
 clean:
 	$(RM) $(OBJECTS)
+	make clean -C libft
 
 fclean: clean
 	$(RM) $(NAME)
+	make fclean -C libft
 
 re: fclean all
 
