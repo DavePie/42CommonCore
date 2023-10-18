@@ -6,12 +6,20 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:40:29 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/18 14:01:43 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:38:29 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/**
+ * @brief Create a new param object
+ * 
+ * @param conv 
+ * @param cur_num 
+ * @param prev_dot 
+ * @return t_printf* 
+ */
 static t_printf	*create_new_param(char conv, int *cur_num, int *prev_dot)
 {
 	t_printf	*vals;
@@ -32,6 +40,14 @@ static t_printf	*create_new_param(char conv, int *cur_num, int *prev_dot)
 	return (vals);
 }
 
+/**
+ * @brief Handle inputted numbers
+ * 
+ * @param is_digit 
+ * @param cur_num 
+ * @param prev_dot 
+ * @param vals 
+ */
 static void	store_num(int is_digit, int *cur_num, int *prev_dot, t_printf *vals)
 {
 	if (*prev_dot)
@@ -81,6 +97,14 @@ static t_printf	*extract_param(const char *format, va_list ap)
 	return (vals);
 }
 
+/**
+ * @brief Given a format, extract the parameters, write the format,
+ * and return the length
+ * 
+ * @param format 
+ * @param ap 
+ * @return int 
+ */
 static int	process_convert(const char *format, va_list ap)
 {
 	t_printf	*vals;

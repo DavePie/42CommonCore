@@ -6,12 +6,21 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:21:25 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/18 13:44:43 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:39:42 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/**
+ * @brief Return a new string with characters added to the sides
+ * 
+ * @param str 
+ * @param nlen 
+ * @param pad 
+ * @param left 
+ * @return char* 
+ */
 char	*add_to_side(char *str, int nlen, char pad, int left)
 {
 	int		l;
@@ -39,6 +48,14 @@ char	*add_to_side(char *str, int nlen, char pad, int left)
 	return (ans);
 }
 
+/**
+ * @brief Return a new string with 0 added to the side, handling numbers (ugh)
+ * 
+ * @param num 
+ * @param n 
+ * @param is_prec 
+ * @return char* 
+ */
 char	*add_zeros(char *num, int n, int is_prec)
 {
 	int		l;

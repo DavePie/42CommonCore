@@ -6,12 +6,21 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:27:39 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/18 14:20:30 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:36:46 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/**
+ * @brief returns the number in the given base with the plus/space/minus in front
+ * 
+ * @param n 
+ * @param b 
+ * @param param 
+ * @param is_neg 
+ * @return char* 
+ */
 char	*ft_ltoa(unsigned long n, char *b, t_printf *param, int is_neg)
 {
 	unsigned long	temp;
@@ -61,6 +70,13 @@ unsigned int	get_end(const char *format)
 	return (i);
 }
 
+/**
+ * @brief Set the param object
+ * 
+ * @param format 
+ * @param prev_dot 
+ * @param vals 
+ */
 void	set_param(const char *format, int *prev_dot, t_printf *vals)
 {
 	if (*format == '.' && ++*prev_dot)
