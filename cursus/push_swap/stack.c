@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:46:44 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/17 11:11:46 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/20 13:33:58 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ t_node	*add_front(t_stack *s, t_node *new)
 	{
 		s->start = new;
 		s->end = new;
+		s->len = 1;
 		return (new);
 	}
+	s->len++;
 	s->start->prev = new;
 	new->prev = 0;
 	new->next = s->start;
@@ -45,8 +47,10 @@ t_node	*add_back(t_stack *s, t_node *new)
 	{
 		s->start = new;
 		s->end = new;
+		s->len = 1;
 		return (new);
 	}
+	s->len++;
 	s->end->next = new;
 	new->prev = s->end;
 	new->next = 0;
@@ -60,8 +64,8 @@ t_node	*remove_front(t_stack *s)
 	
 	if (!s->start)
 		return (0);
+	s->len--;
 	temp = s->start;
-	
 	if (!temp->next)
 	{
 		s->end = 0;
@@ -81,7 +85,7 @@ t_node	*remove_back(t_stack *s)
 	if (!s->end)
 		return (0);
 	temp = s->end;
-	
+	s->len--;
 	if (!temp->prev)
 	{
 		s->start = 0;

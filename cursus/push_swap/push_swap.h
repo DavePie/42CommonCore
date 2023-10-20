@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:37:24 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/17 16:57:11 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:44:30 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
 typedef struct s_node
 {
 	struct s_node	*next;
@@ -25,6 +26,7 @@ typedef struct s_stack
 {
 	struct s_node	*start;
 	struct s_node	*end;
+	int				len;
 }	t_stack;
 typedef struct s_stacks
 {
@@ -44,6 +46,7 @@ int	rr(t_stacks *s);
 int	rra(t_stacks *s);
 int	rrb(t_stacks *s);
 int	rrr(t_stacks *s);
+int	sa(t_stacks *s);
 
 /**
  * 1 2 3 0 4 5
