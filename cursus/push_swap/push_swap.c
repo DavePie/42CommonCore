@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:45:41 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/20 17:59:47 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:25:00 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ void	print_stacks(t_stacks *s)
 		b = b->next;
 	}
 	printf(" (%d)\n\n", s->b->len);
-}
-
-void	add_table(t_stack *s, int *a, int n)
-{
-	while (n-- >1)
-	{
-		add_back(s, new_node(*(a++)));
-	}
 }
 
 int	is_sorted(t_stacks *s)
@@ -108,7 +100,6 @@ int	abs(int x)
 
 int	min_moves(int x, int y)
 {
-	//printf("moves %d %d\n",x , y);
 	if ((x > 0 && y > 0) || (x < 0 && y < 0))
 		return (abs(x) + abs(y) - abs(x - y));
 	return (abs(x) + abs(y));
@@ -310,7 +301,7 @@ void	ft_lstclear(t_node **lst)
 	*lst = 0;
 }
 
-int	main(int argc, char *argv[])
+t_stacks	*initialize_t_stacks()
 {
 	t_stacks	*s;
 
@@ -332,6 +323,16 @@ int	main(int argc, char *argv[])
 	}
 	*(s->a) = (t_stack){.start = 0, .end = 0, .len = 0};
 	*(s->b) = (t_stack){.start = 0, .end = 0, .len = 0};
+	return (s);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_stacks	*s;
+
+	s = initialize_t_stacks();
+	if (!s)
+		return (0);
 	argv++;
 	while (--argc > 0)
 	{
@@ -346,6 +347,5 @@ int	main(int argc, char *argv[])
 		argv++;
 	}
 	sort(s);
-	print_stacks(s);
 	return (0);
 }
