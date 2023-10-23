@@ -6,13 +6,13 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:46:44 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/20 13:33:58 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:41:59 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node *new_node(int i)
+t_node	*new_node(int i)
 {
 	t_node	*new;
 
@@ -61,7 +61,7 @@ t_node	*add_back(t_stack *s, t_node *new)
 t_node	*remove_front(t_stack *s)
 {
 	t_node	*temp;
-	
+
 	if (!s->start)
 		return (0);
 	s->len--;
@@ -81,7 +81,7 @@ t_node	*remove_front(t_stack *s)
 t_node	*remove_back(t_stack *s)
 {
 	t_node	*temp;
-	
+
 	if (!s->end)
 		return (0);
 	temp = s->end;
@@ -96,13 +96,4 @@ t_node	*remove_back(t_stack *s)
 	s->end = temp->prev;
 	temp->prev = 0;
 	return (temp);
-}
-
-void	swap(t_node *an, t_node *bn)
-{
-	int	i;
-
-	i = an->i;
-	an->i = bn->i;
-	bn->i = i;
 }
