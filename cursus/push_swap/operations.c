@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:27:00 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/17 10:59:05 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:42:12 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	sa(t_stacks *s)
 {
 	if (!s->a->start || !s->a->start->next)
 		return (0);
-	swap(s->a->start, s->a->end);
+	swap(s->a->start, s->a->start->next);
 	return (1);
 }
 
