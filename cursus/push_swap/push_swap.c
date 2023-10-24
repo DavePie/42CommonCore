@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:45:41 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/24 17:50:25 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:41:45 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,21 @@ int	read_input(char *str, t_stacks *s)
 		num = 0;
 		while (*str == ' ')
 			str++;
-		is_neg = (*str == '-' && *str++);
-		str += (*str == '+');
-		if (!*str)
+		is_neg = (*str == '-');
+		if (((*str == '+' || *str == '-') && str++)
+			&& (*str < '0' || *str > '9'))
 			return (0);
 		while (*str && *str != ' ')
 		{
-			if (*str < '0' || *str > '9')
-				return (0);
 			num = num * 10 + *str++ - '0';
-			if (num - is_neg > 2147483647)
+			if (num - is_neg > M || *(str - 1) < '0' || *(str - 1) > '9')
 				return (0);
 		}
-		if (contains((int)num * (-2 * is_neg + 1), s))
+		if (*(str - 1) >= '0' && *(str - 1) <= '9'
+			&& contains((int)num * (-2 * is_neg + 1), s))
 			return (0);
-		add_back(s->a, new_node((int)num * (-2 * is_neg + 1)));
+		if (*(str - 1) >= '0' && *(str - 1) <= '9')
+			add_back(s->a, new_node((int)num * (-2 * is_neg + 1)));
 	}
 	return (1);
 }
@@ -138,6 +138,11 @@ int	main(int argc, char *argv[])
 		}
 		argv++;
 	}
-	sort(s);
+	if (!is_sort(s->a))
+		sort(s);
+	ft_lstclear(&s->a->start);
+	free(s->a);
+	free(s->b);
+	free(s);
 	return (0);
 }

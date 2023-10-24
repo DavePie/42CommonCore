@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:37:24 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/24 17:28:15 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:40:59 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# define M 2147483647
 
 typedef struct s_node
 {
