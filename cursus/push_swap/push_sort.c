@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:46:19 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:46:29 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:24:36 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	push_sort_b(t_stacks *s)
 	t_node	*minn;
 	t_min	min;
 
-	while (s->a->len > 3)
+	while (s->a->len > 3 && !is_sort(s->a))
 	{
 		min = (t_min){.i = -1, .mini = 0};
 		cur = s->a->start;
@@ -45,19 +45,17 @@ int	sort_three(t_stacks *s)
 	n = s->a->start;
 	if (!n || !n->next)
 		return (0);
-	if (!n->next->next && (n->i > n->next->i && write(1, "ra\n", 3)))
+	if (!n->next->next && (n->i > n->next->i))
 		return (ra(s));
 	if (!n->next->next)
 		return (0);
-	if ((n->i > n->next->i && n->i > n->next->next->i)
-		&& write(1, "ra\n", 3))
+	if ((n->i > n->next->i && n->i > n->next->next->i))
 		ra(s);
 	n = s->a->start;
-	if (n->next->i > n->next->next->i && n->next->i > n->i
-		&& write(1, "rra\n", 4))
+	if (n->next->i > n->next->next->i && n->next->i > n->i)
 		rra(s);
 	n = s->a->start;
-	if (n->i > n->next->i && write(1, "sa\n", 3))
+	if (n->i > n->next->i)
 		sa(s);
 	return (0);
 }

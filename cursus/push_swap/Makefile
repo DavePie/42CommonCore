@@ -1,4 +1,4 @@
-CFILES	:= find_best_insert.c operations_r.c operations.c push_sort.c push_swap.c stack.c
+CFILES	:= find_best_insert.c operations_r.c operations.c push_sort.c push_swap.c stack.c is_sort.c
 
 RM		:= rm -f
 NAME	:= push_swap

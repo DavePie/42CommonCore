@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:44:15 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:44:45 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:18:11 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,27 @@ int	abs(int x)
 int	min_moves(int x, int y)
 {
 	if ((x > 0 && y > 0) || (x < 0 && y < 0))
-		return (abs(x) + abs(y) - abs(x - y));
+	{
+		if (abs(x) > abs(y))
+			return (abs(x));
+		return (abs(y));
+	}
 	return (abs(x) + abs(y));
 }
 
 void	rotate(int a, int b, t_stacks *s)
 {
-	while (b > 0 && a > 0 && b-- && a-- && write(1, "rr\n", 3))
+	while (b > 0 && a > 0 && b-- && a--)
 		rr(s);
-	while (b < 0 && a < 0 && b++ && a++ && write(1, "rrr\n", 4))
+	while (b < 0 && a < 0 && b++ && a++)
 		rrr(s);
-	while (b > 0 && b-- && write(1, "rb\n", 3))
+	while (b > 0 && b--)
 		rb(s);
-	while (a > 0 && a-- && write(1, "ra\n", 3))
+	while (a > 0 && a--)
 		ra(s);
-	while (b < 0 && b++ && write(1, "rrb\n", 4))
+	while (b < 0 && b++)
 		rrb(s);
-	while (a < 0 && a++ && write(1, "rra\n", 4))
+	while (a < 0 && a++)
 		rra(s);
 }
 
@@ -64,7 +68,6 @@ int	best_insert_b(int a_i, t_node *n, t_stacks *s, int write_out)
 	{
 		rotate(a_top, b_top, s);
 		pb(s);
-		write(1, "pb\n", 3);
 	}
 	return (min_moves(a_top, b_top));
 }
@@ -85,5 +88,4 @@ void	best_insert_a(t_node *n, t_stacks *s)
 		a_top = a_top - s->a->len;
 	rotate(a_top, 0, s);
 	pa(s);
-	write(1, "pa\n", 3);
 }

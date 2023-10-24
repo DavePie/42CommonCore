@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:37:24 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:46:43 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:28:15 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void	best_insert_a(t_node *n, t_stacks *s);
 int		best_insert_b(int a_i, t_node *n, t_stacks *s, int write_out);
 void	rotate(int a, int b, t_stacks *s);
 void	sort(t_stacks *s);
+int		is_sort(t_stack *cur);
 #endif
