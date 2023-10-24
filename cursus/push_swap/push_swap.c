@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:45:41 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:47:13 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:33:32 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	read_input(char *str, t_stacks *s)
 		if (*str < '0' || *str > '9')
 			return (0);
 		num = num * 10 + *str - '0';
-		if (num > 2147483647 + is_neg)
+		if (num - is_neg > 2147483647)
 			return (0);
 		str++;
 	}
