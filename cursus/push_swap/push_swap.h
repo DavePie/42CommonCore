@@ -6,14 +6,13 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:37:24 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/25 10:43:40 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:41:12 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # define M 2147483647

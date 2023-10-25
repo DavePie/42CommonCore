@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 09:35:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/25 11:50:29 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:54:53 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,35 @@ int	exec_operations(char *input, t_stacks *s)
 	return (1);
 }
 
+int	free_helper(char *input)
+{
+	free(input);
+	return (-1);
+}
+
 int	readstdin(t_stacks *s)
 {
 	char	*input;
 	int		size;
+	int		i;
 
-	input = malloc(sizeof(char) * 5);
+	i = 0;
+	input = malloc(sizeof(char) * 1000);
 	if (!input)
 		return (0);
-	size = read(STDIN_FILENO, input, 5);
-	if (size >= 5)
-		free(input);
-	if (size >= 5)
-		return (0);
+	size = read(STDIN_FILENO, input, 1);
 	while (size > 0)
 	{
-		input[size - 1] = '\0';
-		if (!exec_operations(input, s))
+		if (input[i] == '\n')
 		{
-			free(input);
-			return (-1);
+			input[i] = '\0';
+			if (!exec_operations(input, s))
+				return (free_helper(input));
+			i = -1;
 		}
-		size = read(STDIN_FILENO, input, 5);
+		if (i >= 998)
+			return (free_helper(input));
+		size = read(STDIN_FILENO, &(input[++i]), 1);
 	}
 	free(input);
 	return (1);
@@ -89,13 +96,12 @@ int	main(int argc, char *argv[])
 	argv++;
 	while (--argc > 0)
 	{
-		if (!read_input(*argv, s) && write(STDERR_FILENO, "Error\n", 6))
-		{
-			free_structs(s);
+		if (!read_input(*argv, s) && write(2, "Error\n", 6) && free_structs(s))
 			return (0);
-		}
 		argv++;
 	}
+	if (!s->a->len && free_structs(s))
+		return (0);
 	result = readstdin(s);
 	if (result == 1 && is_sort(s->a) && !s->b->start)
 		write(1, "OK\n", 3);
