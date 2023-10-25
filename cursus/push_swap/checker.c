@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 09:35:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/25 10:57:59 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:50:29 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,17 @@ int	readstdin(t_stacks *s)
 		return (0);
 	size = read(STDIN_FILENO, input, 5);
 	if (size >= 5)
+		free(input);
+	if (size >= 5)
 		return (0);
 	while (size > 0)
 	{
 		input[size - 1] = '\0';
 		if (!exec_operations(input, s))
-			return (0);
+		{
+			free(input);
+			return (-1);
+		}
 		size = read(STDIN_FILENO, input, 5);
 	}
 	free(input);
@@ -76,6 +81,7 @@ int	free_structs(t_stacks *s)
 int	main(int argc, char *argv[])
 {
 	t_stacks	*s;
+	int			result;
 
 	s = initialize_t_stacks();
 	if (!s)
@@ -90,10 +96,13 @@ int	main(int argc, char *argv[])
 		}
 		argv++;
 	}
-	if (readstdin(s) && is_sort(s->a) && !s->b->start)
+	result = readstdin(s);
+	if (result == 1 && is_sort(s->a) && !s->b->start)
 		write(1, "OK\n", 3);
-	else
+	else if (result != -1)
 		write(1, "KO\n", 3);
+	else
+		write(STDERR_FILENO, "Error\n", 6);
 	free_structs(s);
 	return (0);
 }
