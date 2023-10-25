@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:27:00 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/25 10:16:32 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:00:43 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int	sb(t_stacks *s, int print)
 
 int	ss(t_stacks *s, int print)
 {
-	if (!s->b->start || !s->b->start->next
-		|| !s->a->start || !s->a->start->next)
-		return (0);
 	sa(s, 0);
 	sb(s, 0);
 	if (print)

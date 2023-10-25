@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:40:33 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/25 10:10:20 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:00:32 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,8 @@ int	rb(t_stacks *s, int print)
 
 int	rr(t_stacks *s, int print)
 {
-	if (!s->b->start || !s->b->start->next
-		|| !s->a->start || !s->a->start->next)
-		return (0);
-	add_back(s->a, remove_front(s->a));
-	add_back(s->b, remove_front(s->b));
+	ra(s, 0);
+	rb(s, 0);
 	if (print)
 		write(1, "rr\n", 3);
 	return (1);

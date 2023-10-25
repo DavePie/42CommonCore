@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 09:35:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/25 10:38:06 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:57:59 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	readstdin(t_stacks *s)
 	int		size;
 
 	input = malloc(sizeof(char) * 5);
+	if (!input)
+		return (0);
 	size = read(STDIN_FILENO, input, 5);
 	if (size >= 5)
 		return (0);
