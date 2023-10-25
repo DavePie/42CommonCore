@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:46:19 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/24 18:13:48 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:10:54 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ int	sort_three(t_stacks *s)
 	if (!n || !n->next)
 		return (0);
 	if (!n->next->next && (n->i > n->next->i))
-		return (ra(s));
+		return (ra(s, 1));
 	if (!n->next->next)
 		return (0);
 	if ((n->i > n->next->i && n->i > n->next->next->i))
-		ra(s);
+		ra(s, 1);
 	n = s->a->start;
 	if (n->next->i > n->next->next->i && n->next->i > n->i)
-		rra(s);
+		rra(s, 1);
 	n = s->a->start;
 	if (n->i > n->next->i)
-		sa(s);
+		sa(s, 1);
 	return (0);
 }
 

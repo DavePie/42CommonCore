@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix_binary.c                                     :+:      :+:    :+:   */
+/*   is_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:57:26 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/24 17:22:48 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:19:20 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,26 @@ int	is_sort(t_stack *cur)
 	}
 	return (1);
 }
+
+int	pb(t_stacks *s, int print)
+{
+	if (!s->a->start)
+		return (0);
+	add_front(s->b, remove_front(s->a));
+	if (print)
+		write(1, "pb\n", 3);
+	return (1);
+}
+
+int	rrr(t_stacks *s, int print)
+{
+	if (!s->b->start || !s->b->start->next
+		|| !s->a->start || !s->a->start->next)
+		return (0);
+	add_front(s->a, remove_back(s->a));
+	add_front(s->b, remove_back(s->b));
+	if (print)
+		write(1, "rrr\n", 4);
+	return (1);
+}
+

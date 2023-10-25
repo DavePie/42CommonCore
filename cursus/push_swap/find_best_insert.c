@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:44:15 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/24 17:18:11 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:11:38 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ int	min_moves(int x, int y)
 void	rotate(int a, int b, t_stacks *s)
 {
 	while (b > 0 && a > 0 && b-- && a--)
-		rr(s);
+		rr(s, 1);
 	while (b < 0 && a < 0 && b++ && a++)
-		rrr(s);
+		rrr(s, 1);
 	while (b > 0 && b--)
-		rb(s);
+		rb(s, 1);
 	while (a > 0 && a--)
-		ra(s);
+		ra(s, 1);
 	while (b < 0 && b++)
-		rrb(s);
+		rrb(s, 1);
 	while (a < 0 && a++)
-		rra(s);
+		rra(s, 1);
 }
 
 int	best_insert_b(int a_i, t_node *n, t_stacks *s, int write_out)
@@ -67,7 +67,7 @@ int	best_insert_b(int a_i, t_node *n, t_stacks *s, int write_out)
 	if (write_out)
 	{
 		rotate(a_top, b_top, s);
-		pb(s);
+		pb(s, 1);
 	}
 	return (min_moves(a_top, b_top));
 }
@@ -87,5 +87,5 @@ void	best_insert_a(t_node *n, t_stacks *s)
 	if (s->a->len - a_top < a_top)
 		a_top = a_top - s->a->len;
 	rotate(a_top, 0, s);
-	pa(s);
+	pa(s, 1);
 }

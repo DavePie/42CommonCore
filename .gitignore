@@ -6,3 +6,4 @@ a.out
 cursus/printf/libftprintf.a
 .vscode/c_cpp_properties.json
 cursus/push_swap/push_swap
+cursus/push_swap/checker
