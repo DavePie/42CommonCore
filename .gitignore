@@ -8,3 +8,4 @@ cursus/printf/libftprintf.a
 cursus/push_swap/push_swap
 cursus/push_swap/checker
 *.a
+cursus/fract-ol/fractol

@@ -6,20 +6,20 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:38:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 11:40:13 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:20:44 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_OL_H
 # define FRACT_OL_H
 
-# include "mlx.h"
+# include <mlx.h>
 # include "keys.h"
 # include <unistd.h>
 # include <math.h>
 # include <stdlib.h>
 
-# define REP 60
+# define REP 100
 
 # define HEIGHT 1000
 # define WIDTH 1500
