@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:12:58 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 11:39:40 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:43:34 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	update_color(t_win *w, int i, int j, int m)
 			+ ((int)((1 - w->c_offset) * 255 * m / REP) << 8));
 	if (w->color == TRIP2)
 		set_color(w->pix, i, j,
-			((int)((1 - w->c_offset) * 255 * m / REP) << 16));
+			((int)((1 - w->c_offset) * 255 * m / REP) << 16) + (0xFF << 24));
 }
 
 void	put_pixel(t_win *w, int i, int j)

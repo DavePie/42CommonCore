@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:38:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 13:20:44 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:29:59 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define MIX 3
 # define PULSE 4
 # define TRIP 5
-# define TRIP2 5
+# define TRIP2 6
 
 typedef struct s_win
 {

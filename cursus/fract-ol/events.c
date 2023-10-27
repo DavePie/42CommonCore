@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:15:08 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 11:29:43 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:32:38 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	frame_event(t_win *w)
 	int	i;
 	int	j;
 
-	if (w->color != PULSE && w->color != TRIP)
+	if (w->color != PULSE && w->color != TRIP && w->color != TRIP2)
 		return (0);
 	i = -1;
 	while (++i < WIDTH)
@@ -28,7 +28,7 @@ int	frame_event(t_win *w)
 	}
 	if (w->color == PULSE)
 		w->c_offset += 0.01;
-	if (w->color == TRIP)
+	if (w->color == TRIP || w->color == TRIP2)
 		w->c_offset += 0.05;
 	if ((w->c_offset > 1 && w->color == PULSE)
 		|| (w->c_offset > 255 && w->color == TRIP))
