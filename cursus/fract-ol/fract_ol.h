@@ -6,19 +6,18 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:38:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/26 18:11:57 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:40:13 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_OL_H
+# define FRACT_OL_H
+
 # include "mlx.h"
 # include "keys.h"
 # include <unistd.h>
 # include <math.h>
 # include <stdlib.h>
-# include <stdio.h>
-
-# define FRACT_OL_H
 
 # define REP 60
 
@@ -38,11 +37,13 @@
 # define GREEN 2
 # define MIX 3
 # define PULSE 4
+# define TRIP 5
+# define TRIP2 5
 
 typedef struct s_win
 {
 	void	*mlx;
-	void	*win_ptr;
+	void	*win;
 
 	int		frac;
 	double	param1;
@@ -52,9 +53,24 @@ typedef struct s_win
 	void	*img;
 	char	*buffer;
 	char	*pix;
+	double	c_offset;
 
 	double	zoom;
 	double	offset_x;
 	double	offset_y;
 }	t_win;
+
+int		get_frac(double a, double b, t_win *w);
+void	print_fractal(t_win *w);
+void	update_color(t_win *w, int i, int j, int m);
+
+int		read_input(int n, char *argv[], t_win *w);
+int		print_usage(void);
+
+int		frame_event(t_win *w);
+int		mouse_event(int key, int x, int y, t_win *w);
+int		key_event(int key, t_win *w);
+
+int		exit_fract(t_win *w);
+
 #endif
