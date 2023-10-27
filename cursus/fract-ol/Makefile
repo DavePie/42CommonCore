@@ -2,11 +2,11 @@ CFILES	:= events.c fract_colors.c fract-ol.c fractals.c parse_input.c
 RM		:= rm -f
 NAME	:= fractol
 CC		:= gcc
-INCDIR	:= .
+INCDIR	:= -I . -I mlx
 
 LIB	:= libmlx.a
 LIBDIR := mlx/$(LIB)
-CFLAGS	:= -Wall -Wextra -Werror -I$(INCDIR)
+CFLAGS	:= -Wall -Wextra -Werror $(INCDIR)
 
 all: $(NAME)
 
