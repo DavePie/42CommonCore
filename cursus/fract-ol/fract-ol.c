@@ -6,11 +6,24 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:36:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 11:41:41 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:17:55 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t a)
+{
+	while (*s1 != '\0' && *s1 == *s2 && a > 0)
+	{
+		s1++;
+		s2++;
+		a--;
+	}
+	if (a == 0)
+		return (0);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
+}
 
 int	exit_fract(t_win *w)
 {
@@ -44,10 +57,10 @@ int	print_usage(void)
 	write(1, "            ~~Fracking Oil (fract-ol)~~\n", 40);
 	write(1, "  Usage: ./fractol", 18);
 	write(1, " <fractal name> <fractal color> <fractal param>\n\n", 49);
-	write(1, "  <fractal name> : mandelbrot, julia, paint, complex_cubic\n", 59);
+	write(1, "  <fractal name> : mandelbrot, julia, burning_ship\n", 59);
 	write(1, "  <fractal color> : red, blue,", 30);
 	write(1, " green, mix, pulse, trip, trip2\n", 32);
-	write(1, "  <fractal param> : <digit>.<digit> <digit>.<digit>\n\n", 53);
+	write(1, "  <fractal param> : <number1> <number2>\n\n", 53);
 	write(1, "  note: mandelbrot ignores fractal parameters\n", 46);
 	write(1, "  example: ./fractol julia red 0.5 0.8\n", 39);
 	return (1);

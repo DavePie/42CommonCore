@@ -6,24 +6,11 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 10:21:52 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 11:39:59 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:17:36 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
-
-int	ft_strncmp(const char *s1, const char *s2, size_t a)
-{
-	while (*s1 != '\0' && *s1 == *s2 && a > 0)
-	{
-		s1++;
-		s2++;
-		a--;
-	}
-	if (a == 0)
-		return (0);
-	return ((unsigned char)*s1 - (unsigned char)*s2);
-}
 
 int	set_fractal(char *name, t_win *w)
 {
@@ -31,10 +18,8 @@ int	set_fractal(char *name, t_win *w)
 		w->frac = MANDELBROT;
 	else if (!ft_strncmp("julia", name, 6))
 		w->frac = JULIA;
-	else if (!ft_strncmp("paint", name, 6))
-		w->frac = PAINT;
-	else if (!ft_strncmp("complex_cubic", name, 14))
-		w->frac = COMPLEX_CUBE;
+	else if (!ft_strncmp("burning_ship", name, 6))
+		w->frac = BURNING_SHIP;
 	else
 		return (0);
 	return (1);
@@ -61,16 +46,40 @@ int	set_color_type(char *color, t_win *w)
 	return (1);
 }
 
+double	ft_atoi(const char *s)
+{
+	double	ans;
+	long	count;
+	int		is_neg;
+
+	ans = 0;
+	count = 10;
+	is_neg = *s == '-';
+	if (*s == '-' || *s == '+')
+		s++;
+	while ((*s == '0' || *s == '1') && ans < 2)
+		ans += *(s++) - '0';
+	if ((*s != '.' && *s) || ans >= 2)
+		return (2);
+	if (!*s)
+		return (ans * (1 - 2 * is_neg));
+	s++;
+	while (*s >= '0' && *s <= '9')
+	{
+		ans += (double)(*(s++) - '0') / count;
+		count *= 10;
+	}
+	if (*s)
+		return (2);
+	return (ans * (1 - 2 * is_neg));
+}
+
 int	set_params(char *p1, char *p2, t_win *w)
 {
-	if (*p1 < '0' || *p1 > '9' || p1[1] != '.'
-		|| p1[2] < '0' || p1[2] > '9' || p1[3])
+	w->param1 = ft_atoi(p1);
+	w->param2 = ft_atoi(p2);
+	if (w->param1 == 2 || w->param2 == 2)
 		return (0);
-	if (*p2 < '0' || *p2 > '9' || p2[1] != '.'
-		|| p2[2] < '0' || p2[2] > '9' || p2[3])
-		return (0);
-	w->param1 = p1[0] - '0' + (double)(p1[2] - '0') / 10;
-	w->param2 = p2[0] - '0' + (double)(p2[2] - '0') / 10;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:38:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 13:29:59 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:18:09 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define REP 100
+# define REP 80
 
 # define HEIGHT 1000
 # define WIDTH 1500
@@ -29,8 +29,7 @@
 
 # define MANDELBROT 0
 # define JULIA 1
-# define PAINT 2
-# define COMPLEX_CUBE 3
+# define BURNING_SHIP 2
 
 # define RED 0
 # define BLUE 1
@@ -66,6 +65,7 @@ void	update_color(t_win *w, int i, int j, int m);
 
 int		read_input(int n, char *argv[], t_win *w);
 int		print_usage(void);
+int		ft_strncmp(const char *s1, const char *s2, size_t a);
 
 int		frame_event(t_win *w);
 int		mouse_event(int key, int x, int y, t_win *w);
