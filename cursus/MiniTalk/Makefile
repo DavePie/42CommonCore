@@ -7,7 +7,7 @@ CC		:= gcc
 INCDIR	:= -I . -I mlx
 
 LIB	:= printf/libftprintf.a
-CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) $(LIB) -fsanitize=address 
+CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) $(LIB) #-fsanitize=address 
 
 all: $(NAME) $(NAME2)
 
