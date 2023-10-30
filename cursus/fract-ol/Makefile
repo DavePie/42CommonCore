@@ -6,7 +6,7 @@ INCDIR	:= -I . -I mlx
 
 LIB	:= libmlx.a
 LIBDIR := mlx/$(LIB)
-CFLAGS	:= -Wall -Wextra -Werror $(INCDIR)
+CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) #-fsanitize=address 
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:36:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/30 08:25:18 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:45:57 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	print_usage(void)
 	write(1, "            ~~Fracking Oil (fract-ol)~~\n", 40);
 	write(1, "  Usage: ./fractol", 18);
 	write(1, " <fractal name> <fractal color> <fractal param>\n\n", 49);
-	write(1, "  <fractal name> : mandelbrot, julia, burning_ship\n", 59);
+	write(1, "  <fractal name> : mandelbrot, julia, burning_ship\n", 51);
 	write(1, "  <fractal color> : red, blue,", 30);
 	write(1, " green, mix, pulse, trip, trip2\n", 32);
 	write(1, "  <fractal param> : <number1> <number2>\n\n", 41);
