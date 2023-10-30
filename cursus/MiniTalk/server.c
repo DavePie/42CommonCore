@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:40:36 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/30 13:59:12 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:33:18 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_buf	*get_t_buffer(int pid, t_buf **sb)
 	if (!new)
 		return (0);
 	*new = (t_buf){.pid = pid,
-		.buff = (char *)malloc(sizeof(char) * 4096)};
+		.buff = (char *)malloc(sizeof(char) * BUFFER_SIZE)};
 	if (!new->buff)
 	{
 		free(new);
@@ -55,8 +55,14 @@ void	store_char(t_buf *c)
 	if (c->cur == '\0')
 	{
 		ft_printf("%s", c->buff);
-		c->cur_i = 0;
+		c->cur_i = -1;
 		kill(c->pid, SIGUSR1);
+	}
+	if (c->cur_i == BUFFER_SIZE - 2)
+	{
+		c->buff[c->cur_i + 1] = '\0';
+		ft_printf("%s", c->buff);
+		c->cur_i = -1;
 	}
 	c->cur = 0;
 	c->cur_bit = 0;
