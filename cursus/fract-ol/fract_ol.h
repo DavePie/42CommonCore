@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:38:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 18:18:09 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/30 08:40:04 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define REP 80
+# define REP 60
 
 # define HEIGHT 1000
 # define WIDTH 1500
