@@ -11,3 +11,4 @@ cursus/push_swap/checker
 cursus/fract-ol/fractol
 cursus/MiniTalk/server
 .gitignore
+cursus/MiniTalk/client
