@@ -9,3 +9,5 @@ cursus/push_swap/push_swap
 cursus/push_swap/checker
 *.a
 cursus/fract-ol/fractol
+cursus/MiniTalk/server
+.gitignore

@@ -5,35 +5,101 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 14:47:14 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 15:39:39 by dvandenb         ###   ########.fr       */
+/*   Created: 2023/10/27 14:40:36 by dvandenb          #+#    #+#             */
+/*   Updated: 2023/10/30 13:59:12 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <signal.h>
+#include "minitalk.h"
 
-int	ft_atoi(const char *str)
+typedef struct s_buf
 {
-	int	ans;
-	int	sign;
+	int				pid;
+	char			cur;
+	int				cur_bit;
+	char			*buff;
+	int				cur_i;
+	struct s_buf	*next;
+}	t_buf;
 
-	ans = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '+' || *str == '-')
-		if (*(str++) == '-')
-			sign *= -1;
-	while (*str >= '0' && *str <= '9')
-		ans = ans * 10 + sign * (*(str++) - '0');
-	return (ans);
+t_buf	*get_t_buffer(int pid, t_buf **sb)
+{
+	t_buf	*new;
+	t_buf	*b;
+
+	b = *sb;
+	while (b && b->pid != pid && b->next)
+		b = b->next;
+	if (b && b->pid == pid)
+		return (b);
+	new = (t_buf *)malloc(sizeof(t_buf));
+	if (!new)
+		return (0);
+	*new = (t_buf){.pid = pid,
+		.buff = (char *)malloc(sizeof(char) * 4096)};
+	if (!new->buff)
+	{
+		free(new);
+		return (0);
+	}
+	if (b)
+		b->next = new;
+	else
+		*sb = new;
+	return (new);
 }
 
-int main(int argc, char*argv[])
+void	store_char(t_buf *c)
 {
-    kill(ft_atoi(argv[1]), SIGUSR1);
-    return 0;
+	c->buff[c->cur_i] = c->cur;
+	if (c->cur == '\0')
+	{
+		ft_printf("%s", c->buff);
+		c->cur_i = 0;
+		kill(c->pid, SIGUSR1);
+	}
+	c->cur = 0;
+	c->cur_bit = 0;
+	c->cur_i++;
+}
+
+void	handle_bit(int a, siginfo_t *input, void *other)
+{
+	static t_buf	*b;
+	t_buf			*c;
+
+	other++;
+	c = get_t_buffer(input->si_pid, &b);
+	c->cur <<= 1;
+	if (a == SIGUSR1)
+		c->cur++;
+	c->cur_bit++;
+	if (c->cur_bit == 8)
+		store_char(c);
+}
+
+int	mysignal(int sig)
+{
+	int					r;
+	struct sigaction	s;
+
+	s.sa_sigaction = handle_bit;
+	sigemptyset(&s.sa_mask);
+	s.sa_flags = SA_SIGINFO;
+	r = sigaction(sig, &s, NULL);
+	return (r);
+}
+
+int	main(void)
+{
+	struct sigaction	sig;
+
+	sigemptyset(&sig.sa_mask);
+	sig.sa_flags = 0;
+	ft_printf("%d\n", (int)getpid());
+	mysignal(SIGUSR1);
+	mysignal(SIGUSR2);
+	while (1)
+		;
+	return (0);
 }
