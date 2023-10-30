@@ -6,22 +6,26 @@ NAME2	:= client
 CC		:= gcc
 INCDIR	:= -I . -I mlx
 
-LIB	:= libmlx.a
-LIBDIR := mlx/$(LIB)
-CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) libftprintf.a -fsanitize=address 
+LIB	:= printf/libftprintf.a
+CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) $(LIB) -fsanitize=address 
 
 all: $(NAME) $(NAME2)
 
-$(NAME): $(CFILE1)
+$(NAME): $(CFILE1) $(LIB)
 	$(CC) $(CFLAGS) $(CFILE1) -o $(NAME)
 
-$(NAME2): $(CFILE2)
+$(NAME2): $(CFILE2) $(LIB)
 	$(CC) $(CFLAGS) $(CFILE2) -o $(NAME2)
 
+$(LIB):
+	make -C printf
+
 clean:
+	make -C printf clean
 
 fclean: clean
 	$(RM) $(NAME) $(NAME2)
+	make -C printf fclean
 
 re: fclean all
 
