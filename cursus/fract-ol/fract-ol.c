@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:36:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 18:17:55 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/30 08:25:18 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	print_usage(void)
 	write(1, "  <fractal name> : mandelbrot, julia, burning_ship\n", 59);
 	write(1, "  <fractal color> : red, blue,", 30);
 	write(1, " green, mix, pulse, trip, trip2\n", 32);
-	write(1, "  <fractal param> : <number1> <number2>\n\n", 53);
+	write(1, "  <fractal param> : <number1> <number2>\n\n", 41);
 	write(1, "  note: mandelbrot ignores fractal parameters\n", 46);
 	write(1, "  example: ./fractol julia red 0.5 0.8\n", 39);
 	return (1);
