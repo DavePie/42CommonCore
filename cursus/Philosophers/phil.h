@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:13:49 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/31 14:16:09 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:24:40 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@
 # include <stdlib.h>
 # include <unistd.h> 
 # include <sys/time.h>
-# define NUM_P 7
 
 typedef struct s_param
 {
-	pthread_mutex_t	*locks;
+	pthread_mutex_t	*ls;
 	int				n;
 	int				total;
-	int				num_eat;
-	unsigned long	time_sleep;
-	unsigned long	time_eat;
-	unsigned long	time_die;
+	int				n_eat;
+	unsigned long	t_slp;
+	unsigned long	t_eat;
+	unsigned long	t_die;
 	unsigned long	last_eat;
 }	t_param;
 #endif
