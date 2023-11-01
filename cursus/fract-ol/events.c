@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:15:08 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 13:32:38 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:58:43 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	mouse_event(int key, int x, int y, t_win *w)
 {
 	if (key == 1)
 	{
-		w->param1 = (double)x / WIDTH;
-		w->param2 = (double)y / HEIGHT;
+		w->param1 = (double)(x - WIDTH / 2) / (WIDTH / 2);
+		w->param2 = (double)(y - HEIGHT / 2) / (HEIGHT / 2);
 		print_fractal(w);
 	}
 	if (key == M_UP)

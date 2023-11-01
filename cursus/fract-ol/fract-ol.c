@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:36:27 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/30 10:45:57 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:51:46 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	main(int argn, char*argv[])
 {
 	t_win	w;
 
-	w = (t_win){.mlx = mlx_init(), .zoom = 1};
-	if (!w.mlx || !read_input(--argn, ++argv, &w))
+	w = (t_win){.zoom = 1};
+	if (!read_input(--argn, ++argv, &w) || !w.mlx)
 		exit_fract(&w);
 	w.win = mlx_new_window(w.mlx, WIDTH, HEIGHT, "fract_ol");
 	if (!w.win)

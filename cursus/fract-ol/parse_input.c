@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 10:21:52 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/10/27 18:17:36 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:51:39 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ int	read_input(int n, char *argv[], t_win *w)
 	if ((n == 3 || n == 4)
 		&& !set_params(argv[n - 2], argv[n - 1], w) && print_usage())
 		return (0);
+	w->mlx = mlx_init();
 	return (1);
 }
