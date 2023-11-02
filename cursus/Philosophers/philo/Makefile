@@ -1,14 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/02 15:56:18 by dvandenb          #+#    #+#              #
+#    Updated: 2023/11/02 17:47:05 by dvandenb         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CFILES	:= main.c threads.c
 RM		:= rm -f
 NAME	:= philo
 CC		:= gcc
 INCDIR	:= -I .
 
-CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) $(LIB) #-fsanitize=address 
+CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) $(LIB) -fsanitize=address 
 
-all: $(NAME) $(NAME2)
+all: $(NAME)
 
-$(NAME): $(CFILE1) $(LIB)
+$(NAME): $(CFILES) $(LIB)
 	$(CC) $(CFLAGS) $(CFILES) -o $(NAME)
 
 clean:

@@ -12,4 +12,5 @@ cursus/fract-ol/fractol
 cursus/MiniTalk/server
 .gitignore
 cursus/MiniTalk/client
-cursus/Philosophers/philo
+cursus/Philosophers/philo/philo
+cursus/Philosophers/philo_bonus/philo
