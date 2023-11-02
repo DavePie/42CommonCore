@@ -6,7 +6,7 @@
 #    By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 15:56:18 by dvandenb          #+#    #+#              #
-#    Updated: 2023/11/02 17:46:20 by dvandenb         ###   ########.fr        #
+#    Updated: 2023/11/02 19:08:27 by dvandenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME	:= philo
 CC		:= gcc
 INCDIR	:= -I .
 
-CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) $(LIB) -fsanitize=address 
+CFLAGS	:= -Wall -Wextra -Werror $(INCDIR) $(LIB) #-fsanitize=address 
 
 all: $(NAME)
 
