@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:56:07 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/11/03 11:32:20 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:29:22 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	init_forks(int n, int ac, char *av[], pid_t *pids)
 		if (!pids[i])
 		{
 			p = (t_param){.n_eat = -1, .t_eat = inp(av[3]) * 1000,
-				.n = i, .t_die = inp(av[2]) * 1000,
-				.t_slp = inp(av[4]) * 1000,
+				.n = i, .t_d = inp(av[2]) * 1000,
+				.t_slp = inp(av[4]) * 1000, .total = n,
 				.write = sem_open("/write", O_CREAT, S_IRWXU, 1),
 				.num_f = sem_open("/forks", O_CREAT, S_IRWXU, n)};
 			if (ac == 6)
@@ -84,7 +84,7 @@ int	main(int ac, char*av[])
 	if (!pids)
 		return (0);
 	init_forks(n, ac, av, pids);
-	while (--n > 0)
+	while (--n >= 0)
 		waitpid(pids[n], 0, 0);
 	free(pids);
 	sem_close(sem_open("/write", O_CREAT, S_IRWXU, 1));
