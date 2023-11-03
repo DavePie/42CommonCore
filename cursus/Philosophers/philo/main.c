@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:08:21 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/11/03 10:55:01 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:47:02 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,22 @@ int	init_pthreads(t_param *par, pthread_mutex_t *locks, int ac, char *av[])
 	int				i;
 	int				n;
 	int				*is_dead;
+	int				*a_eat;
 
 	is_dead = malloc(sizeof(int));
+	a_eat = malloc(sizeof(int));
 	*is_dead = 0;
+	*a_eat = 0;
 	n = inp(av[1]);
 	i = -1;
 	pthread_mutex_init(&(locks[n]), NULL);
 	while (++i < n)
 	{
 		pthread_mutex_init(&(locks[i]), NULL);
-		par[i] = (t_param){.total = n, .n_eat = -1,
+		par[i] = (t_param){.tot = n, .n_eat = -1,
 			.t_eat = inp(av[3]) * 1000, .ls = locks, .n = i,
-			.t_die = inp(av[2]) * 1000, .t_slp = inp(av[4]) * 1000,
-			.write = &(locks[n]), .death = is_dead};
+			.t_d = inp(av[2]) * 1000, .t_slp = inp(av[4]) * 1000,
+			.write = &(locks[n]), .d = is_dead, .a_eat = a_eat};
 		if (ac == 6)
 			par[i].n_eat = inp(av[5]);
 	}
@@ -98,7 +101,7 @@ int	main(int ac, char *av[])
 		pthread_create(&(pids[i]), NULL, &phil_thread, &(par[i]));
 	while (--i >= 0)
 		pthread_join(pids[i], NULL);
-	free(par[0].death);
+	free(par[0].d);
 	while (++i <= n)
 		pthread_mutex_destroy(&locks[i]);
 	free(par);

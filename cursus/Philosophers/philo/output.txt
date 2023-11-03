@@ -1,0 +1,683 @@
+700250 1 is thinking
+700250 1 has taken a fork
+700250 1 has taken a fork
+700250 1 [0;31mis eating
+700250 5 is thinking
+700250 5 has taken a fork
+700250 3 is thinking
+700250 3 has taken a fork
+700250 3 has taken a fork
+700250 3 [0;31mis eating
+700266 4 is thinking
+700266 2 is thinking
+700451 1 is sleeping
+700451 3 is sleeping
+700451 5 has taken a fork
+700451 5 [0;31mis eating
+700451 2 has taken a fork
+700451 2 has taken a fork
+700451 2 [0;31mis eating
+700451 4 has taken a fork
+700655 1 is thinking
+700655 5 is sleeping
+700655 3 is thinking
+700655 4 has taken a fork
+700655 2 is sleeping
+700655 1 has taken a fork
+700655 4 [0;31mis eating
+700655 1 has taken a fork
+700655 1 [0;31mis eating
+700655 3 has taken a fork
+700858 5 is thinking
+700858 4 is sleeping
+700858 2 is thinking
+700858 3 has taken a fork
+700858 1 is sleeping
+700858 3 [0;31mis eating
+700858 5 has taken a fork
+700858 5 has taken a fork
+700858 5 [0;31mis eating
+700858 2 has taken a fork
+701060 4 is thinking
+701060 5 is sleeping
+701060 1 is thinking
+701060 1 has taken a fork
+701062 3 is sleeping
+701062 2 has taken a fork
+701062 2 [0;31mis eating
+701062 4 has taken a fork
+701062 4 has taken a fork
+701062 4 [0;31mis eating
+701264 5 is thinking
+701266 3 is thinking
+701266 4 is sleeping
+701266 2 is sleeping
+701266 5 has taken a fork
+701266 3 has taken a fork
+701266 3 has taken a fork
+701266 3 [0;31mis eating
+701266 1 has taken a fork
+701266 1 [0;31mis eating
+701466 4 is thinking
+701466 2 is thinking
+701466 3 is sleeping
+701466 1 is sleeping
+701466 4 has taken a fork
+701466 2 has taken a fork
+701466 2 has taken a fork
+701466 2 [0;31mis eating
+701466 5 has taken a fork
+701466 5 [0;31mis eating
+701668 3 is thinking
+701668 1 is thinking
+701668 2 is sleeping
+701668 5 is sleeping
+701668 3 has taken a fork
+701668 4 has taken a fork
+701668 4 [0;31mis eating
+701668 1 has taken a fork
+701668 1 has taken a fork
+701668 1 [0;31mis eating
+701871 2 is thinking
+701871 4 is sleeping
+701871 1 is sleeping
+701871 5 is thinking
+701871 5 has taken a fork
+701871 5 has taken a fork
+701871 5 [0;31mis eating
+701871 3 has taken a fork
+701871 3 [0;31mis eating
+701871 2 has taken a fork
+702074 4 is thinking
+702074 1 is thinking
+702074 5 is sleeping
+702074 3 is sleeping
+702074 1 has taken a fork
+702074 4 has taken a fork
+702074 4 has taken a fork
+702074 4 [0;31mis eating
+702074 2 has taken a fork
+702074 2 [0;31mis eating
+702274 5 is thinking
+702274 4 is sleeping
+702274 3 is thinking
+702274 2 is sleeping
+702274 3 has taken a fork
+702274 3 has taken a fork
+702274 5 has taken a fork
+702274 3 [0;31mis eating
+702274 1 has taken a fork
+702274 1 [0;31mis eating
+702478 4 is thinking
+702478 1 is sleeping
+702478 3 is sleeping
+702478 5 has taken a fork
+702478 5 [0;31mis eating
+702478 2 is thinking
+702478 2 has taken a fork
+702478 2 has taken a fork
+702478 2 [0;31mis eating
+702478 4 has taken a fork
+702681 1 is thinking
+702681 5 is sleeping
+702681 2 is sleeping
+702682 1 has taken a fork
+702682 1 has taken a fork
+702682 1 [0;31mis eating
+702682 4 has taken a fork
+702682 4 [0;31mis eating
+702682 3 is thinking
+702682 3 has taken a fork
+702882 2 is thinking
+702882 5 is thinking
+702882 1 is sleeping
+702882 4 is sleeping
+702882 2 has taken a fork
+702882 3 has taken a fork
+702882 3 [0;31mis eating
+702882 5 has taken a fork
+702882 5 has taken a fork
+702882 5 [0;31mis eating
+703082 5 is sleeping
+703082 4 is thinking
+703082 3 is sleeping
+703082 1 is thinking
+703082 1 has taken a fork
+703082 4 has taken a fork
+703082 4 has taken a fork
+703082 4 [0;31mis eating
+703082 2 has taken a fork
+703082 2 [0;31mis eating
+703282 5 is thinking
+703282 3 is thinking
+703282 4 is sleeping
+703282 2 is sleeping
+703282 1 has taken a fork
+703282 1 [0;31mis eating
+703282 5 has taken a fork
+703282 3 has taken a fork
+703282 3 has taken a fork
+703282 3 [0;31mis eating
+703482 4 is thinking
+703482 3 is sleeping
+703483 1 is sleeping
+703483 2 is thinking
+703483 5 has taken a fork
+703483 4 has taken a fork
+703483 5 [0;31mis eating
+703483 2 has taken a fork
+703483 2 has taken a fork
+703483 2 [0;31mis eating
+703684 2 is sleeping
+703684 3 is thinking
+703684 3 has taken a fork
+703684 5 is sleeping
+703684 1 is thinking
+703684 1 has taken a fork
+703684 1 has taken a fork
+703684 1 [0;31mis eating
+703684 4 has taken a fork
+703684 4 [0;31mis eating
+703884 5 is thinking
+703884 2 is thinking
+703884 4 is sleeping
+703884 1 is sleeping
+703884 3 has taken a fork
+703884 3 [0;31mis eating
+703884 2 has taken a fork
+703884 5 has taken a fork
+703884 5 has taken a fork
+703884 5 [0;31mis eating
+704084 4 is thinking
+704084 5 is sleeping
+704084 1 is thinking
+704084 1 has taken a fork
+704084 3 is sleeping
+704084 4 has taken a fork
+704084 4 has taken a fork
+704084 4 [0;31mis eating
+704084 2 has taken a fork
+704084 2 [0;31mis eating
+704287 5 is thinking
+704287 3 is thinking
+704287 4 is sleeping
+704287 2 is sleeping
+704287 5 has taken a fork
+704287 1 has taken a fork
+704287 1 [0;31mis eating
+704287 3 has taken a fork
+704287 3 has taken a fork
+704287 3 [0;31mis eating
+704487 2 is thinking
+704487 1 is sleeping
+704487 4 is thinking
+704487 2 has taken a fork
+704487 3 is sleeping
+704487 5 has taken a fork
+704487 5 [0;31mis eating
+704487 2 has taken a fork
+704487 2 [0;31mis eating
+704487 4 has taken a fork
+704689 1 is thinking
+704689 2 is sleeping
+704689 5 is sleeping
+704689 3 is thinking
+704689 3 has taken a fork
+704689 4 has taken a fork
+704689 4 [0;31mis eating
+704689 1 has taken a fork
+704689 1 has taken a fork
+704689 1 [0;31mis eating
+704889 4 is sleeping
+704889 1 is sleeping
+704889 5 is thinking
+704889 5 has taken a fork
+704889 5 has taken a fork
+704889 5 [0;31mis eating
+704889 2 is thinking
+704889 2 has taken a fork
+704889 3 has taken a fork
+704889 3 [0;31mis eating
+705092 4 is thinking
+705093 1 is thinking
+705093 3 is sleeping
+705093 5 is sleeping
+705093 2 has taken a fork
+705093 2 [0;31mis eating
+705093 4 has taken a fork
+705093 4 has taken a fork
+705093 4 [0;31mis eating
+705093 1 has taken a fork
+705295 3 is thinking
+705295 2 is sleeping
+705295 4 is sleeping
+705295 5 is thinking
+705295 5 has taken a fork
+705295 3 has taken a fork
+705295 3 has taken a fork
+705295 3 [0;31mis eating
+705295 1 has taken a fork
+705295 1 [0;31mis eating
+705498 4 is thinking
+705498 1 is sleeping
+705498 3 is sleeping
+705498 5 has taken a fork
+705498 5 [0;31mis eating
+705498 2 is thinking
+705498 2 has taken a fork
+705498 2 has taken a fork
+705498 2 [0;31mis eating
+705498 4 has taken a fork
+705699 5 is sleeping
+705699 2 is sleeping
+705699 1 is thinking
+705699 1 has taken a fork
+705699 1 has taken a fork
+705699 1 [0;31mis eating
+705699 4 has taken a fork
+705699 4 [0;31mis eating
+705699 3 is thinking
+705699 3 has taken a fork
+705903 5 is thinking
+705903 1 is sleeping
+705903 4 is sleeping
+705903 2 is thinking
+705903 5 has taken a fork
+705903 2 has taken a fork
+705903 3 has taken a fork
+705903 3 [0;31mis eating
+705903 5 has taken a fork
+705903 5 [0;31mis eating
+706105 1 is thinking
+706105 5 is sleeping
+706105 4 is thinking
+706105 3 is sleeping
+706105 1 has taken a fork
+706105 2 has taken a fork
+706106 2 [0;31mis eating
+706106 4 has taken a fork
+706106 4 has taken a fork
+706106 4 [0;31mis eating
+706306 5 is thinking
+706306 3 is thinking
+706306 4 is sleeping
+706306 2 is sleeping
+706306 5 has taken a fork
+706306 1 has taken a fork
+706306 1 [0;31mis eating
+706306 3 has taken a fork
+706306 3 has taken a fork
+706306 3 [0;31mis eating
+706510 4 is thinking
+706510 1 is sleeping
+706510 3 is sleeping
+706510 2 is thinking
+706510 4 has taken a fork
+706510 5 has taken a fork
+706510 5 [0;31mis eating
+706510 2 has taken a fork
+706510 2 has taken a fork
+706510 2 [0;31mis eating
+706713 1 is thinking
+706713 5 is sleeping
+706713 4 has taken a fork
+706713 1 has taken a fork
+706713 2 is sleeping
+706713 3 is thinking
+706713 3 has taken a fork
+706713 1 has taken a fork
+706714 1 [0;31mis eating
+706714 4 [0;31mis eating
+706915 5 is thinking
+706916 1 is sleeping
+706916 2 is thinking
+706916 2 has taken a fork
+706916 4 is sleeping
+706916 3 has taken a fork
+706916 3 [0;31mis eating
+706916 5 has taken a fork
+706916 5 has taken a fork
+706916 5 [0;31mis eating
+707118 1 is thinking
+707118 3 is sleeping
+707118 5 is sleeping
+707118 2 has taken a fork
+707118 2 [0;31mis eating
+707118 4 is thinking
+707118 4 has taken a fork
+707118 4 has taken a fork
+707118 4 [0;31mis eating
+707118 1 has taken a fork
+707319 3 is thinking
+707319 4 is sleeping
+707319 5 is thinking
+707319 5 has taken a fork
+707319 2 is sleeping
+707319 1 has taken a fork
+707319 1 [0;31mis eating
+707319 3 has taken a fork
+707319 3 has taken a fork
+707319 3 [0;31mis eating
+707519 4 is thinking
+707519 3 is sleeping
+707519 1 is sleeping
+707519 4 has taken a fork
+707519 5 has taken a fork
+707519 5 [0;31mis eating
+707519 2 is thinking
+707519 2 has taken a fork
+707519 2 has taken a fork
+707519 2 [0;31mis eating
+707720 3 is thinking
+707720 2 is sleeping
+707720 1 is thinking
+707720 5 is sleeping
+707720 3 has taken a fork
+707720 4 has taken a fork
+707720 4 [0;31mis eating
+707720 1 has taken a fork
+707720 1 has taken a fork
+707720 1 [0;31mis eating
+707920 2 is thinking
+707925 5 is thinking
+707925 4 is sleeping
+707925 1 is sleeping
+707925 3 has taken a fork
+707925 3 [0;31mis eating
+707925 5 has taken a fork
+707925 2 has taken a fork
+707925 5 has taken a fork
+707925 5 [0;31mis eating
+708125 4 is thinking
+708125 1 is thinking
+708125 5 is sleeping
+708125 3 is sleeping
+708125 1 has taken a fork
+708125 4 has taken a fork
+708125 4 has taken a fork
+708125 4 [0;31mis eating
+708125 2 has taken a fork
+708125 2 [0;31mis eating
+708327 5 is thinking
+708327 4 is sleeping
+708327 2 is sleeping
+708327 3 is thinking
+708327 3 has taken a fork
+708327 3 has taken a fork
+708327 3 [0;31mis eating
+708327 5 has taken a fork
+708327 1 has taken a fork
+708327 1 [0;31mis eating
+708527 4 is thinking
+708527 2 is thinking
+708527 3 is sleeping
+708527 1 is sleeping
+708527 4 has taken a fork
+708527 5 has taken a fork
+708527 5 [0;31mis eating
+708527 2 has taken a fork
+708527 2 has taken a fork
+708527 2 [0;31mis eating
+708727 3 is thinking
+708727 5 is sleeping
+708727 1 is thinking
+708727 1 has taken a fork
+708727 4 has taken a fork
+708727 4 [0;31mis eating
+708727 2 is sleeping
+708727 3 has taken a fork
+708727 1 has taken a fork
+708727 1 [0;31mis eating
+708929 5 is thinking
+708929 2 is thinking
+708929 4 is sleeping
+708929 1 is sleeping
+708929 3 has taken a fork
+708929 3 [0;31mis eating
+708929 2 has taken a fork
+708929 5 has taken a fork
+708929 5 has taken a fork
+708929 5 [0;31mis eating
+709133 4 is thinking
+709133 3 is sleeping
+709133 5 is sleeping
+709133 4 has taken a fork
+709133 2 has taken a fork
+709133 2 [0;31mis eating
+709133 1 is thinking
+709133 1 has taken a fork
+709134 4 has taken a fork
+709134 4 [0;31mis eating
+709337 3 is thinking
+709337 4 is sleeping
+709337 5 is thinking
+709337 5 has taken a fork
+709337 2 is sleeping
+709337 1 has taken a fork
+709337 1 [0;31mis eating
+709337 3 has taken a fork
+709337 3 has taken a fork
+709337 3 [0;31mis eating
+709538 1 is sleeping
+709538 2 is thinking
+709538 2 has taken a fork
+709538 5 has taken a fork
+709538 5 [0;31mis eating
+709539 3 is sleeping
+709539 4 is thinking
+709539 4 has taken a fork
+709539 2 has taken a fork
+709539 2 [0;31mis eating
+709738 5 is sleeping
+709738 1 is thinking
+709738 1 has taken a fork
+709738 4 has taken a fork
+709738 4 [0;31mis eating
+709739 3 is thinking
+709739 2 is sleeping
+709739 1 has taken a fork
+709739 1 [0;31mis eating
+709739 3 has taken a fork
+709940 5 is thinking
+709940 4 is sleeping
+709940 1 is sleeping
+709940 2 is thinking
+709940 2 has taken a fork
+709940 3 has taken a fork
+709940 3 [0;31mis eating
+709940 5 has taken a fork
+709940 5 has taken a fork
+709940 5 [0;31mis eating
+710144 1 is thinking
+710144 4 is thinking
+710144 5 is sleeping
+710144 3 is sleeping
+710144 1 has taken a fork
+710144 2 has taken a fork
+710144 2 [0;31mis eating
+710144 4 has taken a fork
+710144 4 has taken a fork
+710144 4 [0;31mis eating
+710345 5 is thinking
+710345 2 is sleeping
+710345 4 is sleeping
+710345 1 has taken a fork
+710345 1 [0;31mis eating
+710345 3 is thinking
+710345 3 has taken a fork
+710345 3 has taken a fork
+710345 3 [0;31mis eating
+710345 5 has taken a fork
+710546 1 is sleeping
+710546 2 is thinking
+710546 5 has taken a fork
+710546 5 [0;31mis eating
+710546 3 is sleeping
+710546 4 is thinking
+710546 4 has taken a fork
+710546 2 has taken a fork
+710546 2 has taken a fork
+710546 2 [0;31mis eating
+710746 5 is sleeping
+710746 3 is thinking
+710746 2 is sleeping
+710746 4 has taken a fork
+710746 4 [0;31mis eating
+710746 1 is thinking
+710746 1 has taken a fork
+710746 1 has taken a fork
+710746 1 [0;31mis eating
+710746 3 has taken a fork
+710947 2 is thinking
+710949 4 is sleeping
+710949 3 has taken a fork
+710949 3 [0;31mis eating
+710951 5 is thinking
+710951 5 has taken a fork
+710951 1 is sleeping
+710951 5 has taken a fork
+710951 5 [0;31mis eating
+710951 2 has taken a fork
+711151 4 is thinking
+711151 3 is sleeping
+711151 5 is sleeping
+711151 1 is thinking
+711151 1 has taken a fork
+711151 4 has taken a fork
+711151 4 has taken a fork
+711151 4 [0;31mis eating
+711151 2 has taken a fork
+711151 2 [0;31mis eating
+711351 5 is thinking
+711351 4 is sleeping
+711351 2 is sleeping
+711351 3 is thinking
+711351 3 has taken a fork
+711351 3 has taken a fork
+711351 3 [0;31mis eating
+711351 5 has taken a fork
+711351 1 has taken a fork
+711351 1 [0;31mis eating
+711552 3 is sleeping
+711552 1 is sleeping
+711552 2 is thinking
+711552 5 has taken a fork
+711552 5 [0;31mis eating
+711552 4 is thinking
+711552 4 has taken a fork
+711552 2 has taken a fork
+711552 2 has taken a fork
+711552 2 [0;31mis eating
+711752 2 is sleeping
+711752 1 is thinking
+711752 5 is sleeping
+711752 3 is thinking
+711752 3 has taken a fork
+711752 4 has taken a fork
+711752 4 [0;31mis eating
+711752 1 has taken a fork
+711752 1 has taken a fork
+711752 1 [0;31mis eating
+711955 2 is thinking
+711955 4 is sleeping
+711955 1 is sleeping
+711955 5 is thinking
+711955 5 has taken a fork
+711955 5 has taken a fork
+711955 5 [0;31mis eating
+711955 3 has taken a fork
+711955 3 [0;31mis eating
+711955 2 has taken a fork
+712159 5 is sleeping
+712159 3 is sleeping
+712159 1 is thinking
+712159 1 has taken a fork
+712159 4 is thinking
+712159 4 has taken a fork
+712159 4 has taken a fork
+712159 4 [0;31mis eating
+712159 2 has taken a fork
+712159 2 [0;31mis eating
+712362 5 is thinking
+712362 3 is thinking
+712362 2 is sleeping
+712362 4 is sleeping
+712362 1 has taken a fork
+712362 1 [0;31mis eating
+712362 3 has taken a fork
+712362 3 has taken a fork
+712362 3 [0;31mis eating
+712362 5 has taken a fork
+712565 2 is thinking
+712565 3 is sleeping
+712565 4 is thinking
+712565 4 has taken a fork
+712565 1 is sleeping
+712565 5 has taken a fork
+712565 5 [0;31mis eating
+712565 2 has taken a fork
+712565 2 has taken a fork
+712565 2 [0;31mis eating
+712767 5 is sleeping
+712767 1 is thinking
+712767 1 has taken a fork
+712767 4 has taken a fork
+712767 4 [0;31mis eating
+712767 2 is sleeping
+712767 3 is thinking
+712767 3 has taken a fork
+712767 1 has taken a fork
+712767 1 [0;31mis eating
+712972 4 is sleeping
+712972 5 is thinking
+712972 3 has taken a fork
+712972 1 is sleeping
+712972 2 is thinking
+712972 5 has taken a fork
+712972 2 has taken a fork
+712972 3 [0;31mis eating
+712972 5 has taken a fork
+712972 5 [0;31mis eating
+713177 4 is thinking
+713177 3 is sleeping
+713177 5 is sleeping
+713177 2 has taken a fork
+713177 2 [0;31mis eating
+713177 1 is thinking
+713177 1 has taken a fork
+713177 4 has taken a fork
+713177 4 has taken a fork
+713177 4 [0;31mis eating
+713377 2 is sleeping
+713377 3 is thinking
+713377 3 has taken a fork
+713377 4 is sleeping
+713377 1 has taken a fork
+713377 5 is thinking
+713377 5 has taken a fork
+713377 3 has taken a fork
+713377 3 [0;31mis eating
+713377 1 [0;31mis eating
+713582 2 is thinking
+713582 1 is sleeping
+713582 4 is thinking
+713582 3 is sleeping
+713582 2 has taken a fork
+713582 2 has taken a fork
+713582 2 [0;31mis eating
+713582 5 has taken a fork
+713582 5 [0;31mis eating
+713582 4 has taken a fork
+713786 1 is thinking
+713786 3 is thinking
+713786 2 is sleeping
+713786 5 is sleeping
+713786 3 has taken a fork
+713786 1 has taken a fork
+713786 1 has taken a fork
+713786 1 [0;31mis eating
+713786 4 has taken a fork
+713786 4 [0;31mis eating
+713988 2 is thinking
+713988 1 is sleeping
+713988 5 is think

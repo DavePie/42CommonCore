@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:13:49 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/11/01 16:43:43 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:45:09 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ typedef struct s_param
 {
 	pthread_mutex_t	*ls;
 	int				n;
-	int				total;
+	int				tot;
 	int				n_eat;
+	int				*a_eat;
 	unsigned long	t_slp;
 	unsigned long	t_eat;
-	unsigned long	t_die;
-	unsigned long	last_eat;
-	int				*death;
+	unsigned long	t_d;
+	unsigned long	l_eat;
+	int				*d;
 	pthread_mutex_t	*write;
 }	t_param;
 void			*phil_thread(void *param);
