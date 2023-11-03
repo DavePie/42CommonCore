@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:56:07 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/11/03 11:16:35 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:32:20 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	safe_exit(pid_t *pids, int i, sem_t *w, sem_t *n)
 	sem_close(n);
 	temp = pids[i];
 	free(pids);
-	kill(pids[i], SIGKILL);
+	kill(temp, SIGKILL);
 }
 
 void	init_forks(int n, int ac, char *av[], pid_t *pids)
