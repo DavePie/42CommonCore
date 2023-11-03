@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:56:07 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/11/03 10:58:47 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:16:35 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ int	inp(char *c)
 	return ((int)a);
 }
 
+void	safe_exit(pid_t *pids, int i, sem_t *w, sem_t *n)
+{
+	pid_t	temp;
+
+	sem_close(w);
+	sem_close(n);
+	temp = pids[i];
+	free(pids);
+	kill(pids[i], SIGKILL);
+}
+
 void	init_forks(int n, int ac, char *av[], pid_t *pids)
 {
 	int		i;
@@ -51,11 +62,7 @@ void	init_forks(int n, int ac, char *av[], pid_t *pids)
 			if (ac == 6)
 				p.n_eat = inp(av[5]);
 			if (phil_process(&p))
-			{
-				sem_close(p.write);
-				sem_close(p.num_f);
-				kill(pids[i], SIGKILL);
-			}
+				safe_exit(pids, i, p.write, p.num_f);
 			exit(0);
 		}
 	}
