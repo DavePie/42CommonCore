@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:13:49 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/11/03 14:45:09 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:34:33 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ typedef struct s_param
 }	t_param;
 void			*phil_thread(void *param);
 unsigned long	get_time(void);
-
+void			ft_sleep(unsigned long to_wait);
 #endif

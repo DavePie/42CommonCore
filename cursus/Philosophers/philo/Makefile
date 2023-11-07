@@ -6,11 +6,11 @@
 #    By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 15:56:18 by dvandenb          #+#    #+#              #
-#    Updated: 2023/11/02 19:08:30 by dvandenb         ###   ########.fr        #
+#    Updated: 2023/11/07 13:35:07 by dvandenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFILES	:= main.c threads.c
+CFILES	:= main.c threads.c sleep.c
 RM		:= rm -f
 NAME	:= philo
 CC		:= gcc
