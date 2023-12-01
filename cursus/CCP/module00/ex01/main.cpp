@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:10:31 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/11/10 10:43:33 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/01 15:42:30 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,50 @@
 std::string cin_nonempty(std::string prompt)
 {
 	std::string input = "";
-	while (!input.length())
+
+	std::cout << prompt;
+	while (!(std::cin >> input) || input.length() == 0)
 	{
-		std::cout << prompt;
-		std::cin >> input;
+		std::cout << "This field can not be empty" << std::endl;
+		std::cin.clear();
+		std::cin.ignore(10000, '\n');
 	}
 	return input;
 }
 
-void	add_phonebook(PhoneBook& pb)
+void add_phonebook(PhoneBook &pb)
 {
 	pb.add(
-	cin_nonempty("First name: "), cin_nonempty("Last name: "),
-	cin_nonempty("Nickname: "), cin_nonempty("Phone number: "),
-	cin_nonempty("Darkest secret: "));
-	std::cout << "Added user" << std::endl;
+		cin_nonempty("First name: "), cin_nonempty("Last name: "),
+		cin_nonempty("Nickname: "), cin_nonempty("Phone number: "),
+		cin_nonempty("Darkest secret: "));
 }
 
-int main()
+void find_contact(PhoneBook &pb)
+{
+	int index;
+	bool visited = false;
+	index = -1;
+
+	if (!pb.is_set(1))
+		return;
+	std::cout << "Please input a index: ";
+	while (!pb.is_set(index))
+	{
+		if (visited)
+			std::cout << "Please enter a valid index: ";
+		while (!(std::cin >> index))
+		{
+			std::cout << "Please enter a number: ";
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
+		}
+		visited = true;
+	}
+	pb.search(index).print_contact();
+}
+
+int main(void)
 {
 	std::string input = "";
 	std::cout << "Welcome to Ph0n3600k 2.23" << std::endl;
@@ -44,17 +70,18 @@ int main()
 		if (!input.compare("ADD"))
 		{
 			add_phonebook(pb);
-		} else if (!input.compare("SEARCH"))
+		}
+		else if (!input.compare("SEARCH"))
 		{
-				std::cout << "this ran3" << std::endl;
-		} else if (!input.compare("EXIT"))
+			pb.print_phone_book();
+			find_contact(pb);
+		}
+		else if (!input.compare("EXIT"))
 		{
 			std::cout << "Bye!" << std::endl;
 			break;
-		} else
-		{
-			std::cout << "Invalid input" << std::endl;
-			std::cout << "Options: ADD, SEARCH, EXIT" << std::endl;
 		}
+		else
+			std::cout << "Invalid input" << std::endl;
 	}
 }

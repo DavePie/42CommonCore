@@ -6,7 +6,7 @@
 #    By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 15:56:18 by dvandenb          #+#    #+#              #
-#    Updated: 2023/11/10 10:27:08 by dvandenb         ###   ########.fr        #
+#    Updated: 2023/12/01 12:39:49 by dvandenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,4 +30,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean all re
+run: $(NAME)
+	./$(NAME)
+
+.PHONY: clean fclean all re run
