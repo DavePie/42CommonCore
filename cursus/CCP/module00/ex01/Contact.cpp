@@ -38,11 +38,10 @@ void Contact::print_element_tab(std::string input)
 	if (input.length() > 10)
 	{
 		std::cout << "|" << input.substr(0, 9) << ".";
-		return ;
+		return;
 	}
 	std::cout << "|";
 	for (int i = input.length(); i < 10; i++)
 		std::cout << " ";
 	std::cout << input;
-
 }

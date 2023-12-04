@@ -6,13 +6,13 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:55:08 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/11/09 14:29:28 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:50:25 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-int main(int ac, char*av[])
+int main(int ac, char *av[])
 {
 	for (int j = 0; ++j < ac;)
 		for (size_t i = 0; i < strlen(av[j]); i++)

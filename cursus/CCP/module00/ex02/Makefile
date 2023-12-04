@@ -6,13 +6,13 @@
 #    By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 15:56:18 by dvandenb          #+#    #+#              #
-#    Updated: 2023/12/04 13:48:17 by dvandenb         ###   ########.fr        #
+#    Updated: 2023/12/04 13:28:59 by dvandenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFILES	:= megaphone.cpp
+CFILES	:= Account.cpp tests.cpp
 RM		:= rm -f
-NAME	:= megaphone
+NAME	:= test
 CC		:= c++
 INCDIR	:= -I .
 
@@ -30,7 +30,7 @@ fclean: clean
 
 re: fclean all
 
-run: all
+run: $(NAME)
 	./$(NAME)
 
 .PHONY: clean fclean all re run

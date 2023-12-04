@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:10:31 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/01 15:42:30 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/01 18:12:17 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ std::string cin_nonempty(std::string prompt)
 	std::cout << prompt;
 	while (!(std::cin >> input) || input.length() == 0)
 	{
-		std::cout << "This field can not be empty" << std::endl;
+		if (std::cin.eof())
+			exit(1);
 		std::cin.clear();
 		std::cin.ignore(10000, '\n');
+		std::cout << "This field can not be empty" << std::endl;
 	}
 	return input;
 }
@@ -42,13 +44,15 @@ void find_contact(PhoneBook &pb)
 
 	if (!pb.is_set(1))
 		return;
-	std::cout << "Please input a index: ";
+	std::cout << "Please input an index: ";
 	while (!pb.is_set(index))
 	{
 		if (visited)
 			std::cout << "Please enter a valid index: ";
 		while (!(std::cin >> index))
 		{
+			if (std::cin.eof())
+				exit(1);
 			std::cout << "Please enter a number: ";
 			std::cin.clear();
 			std::cin.ignore(10000, '\n');
@@ -68,9 +72,7 @@ int main(void)
 		std::cout << "Options: ADD, SEARCH, EXIT" << std::endl;
 		std::cin >> input;
 		if (!input.compare("ADD"))
-		{
 			add_phonebook(pb);
-		}
 		else if (!input.compare("SEARCH"))
 		{
 			pb.print_phone_book();
@@ -81,7 +83,10 @@ int main(void)
 			std::cout << "Bye!" << std::endl;
 			break;
 		}
+		else if (std::cin.eof())
+			return (1);
 		else
 			std::cout << "Invalid input" << std::endl;
 	}
+	return (0);
 }
