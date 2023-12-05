@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:38:45 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/04 17:56:02 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:53:39 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Weapon
 	public:
 		Weapon();
 		Weapon(std::string type);
-		std::string getType(void);
+		const std::string getType(void);
 		void setType(std::string type);
 };
 #endif
