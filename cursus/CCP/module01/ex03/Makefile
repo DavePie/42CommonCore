@@ -12,7 +12,7 @@
 
 CFILES	:= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 RM		:= rm -f
-NAME	:= main
+NAME	:= humansFighting
 CC		:= c++
 INCDIR	:= -I .
 

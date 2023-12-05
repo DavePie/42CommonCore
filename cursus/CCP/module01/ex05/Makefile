@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-CFILES	:= main.cpp
+CFILES	:= main.cpp Harl.cpp
 RM		:= rm -f
-NAME	:= pointerRef
+NAME	:= harlLevels
 CC		:= c++
 INCDIR	:= -I .
 

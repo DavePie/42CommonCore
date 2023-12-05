@@ -12,7 +12,7 @@
 
 CFILES	:= main.cpp Zombie.cpp randomChump.cpp newZombie.cpp
 RM		:= rm -f
-NAME	:= test
+NAME	:= stackHeap
 CC		:= c++
 INCDIR	:= -I .
 

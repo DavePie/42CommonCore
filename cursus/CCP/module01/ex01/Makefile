@@ -12,7 +12,7 @@
 
 CFILES	:= main.cpp Zombie.cpp zombieHorde.cpp
 RM		:= rm -f
-NAME	:= test
+NAME	:= zombieHorde
 CC		:= c++
 INCDIR	:= -I .
 
