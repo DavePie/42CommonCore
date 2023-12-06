@@ -6,13 +6,13 @@
 #    By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 15:56:18 by dvandenb          #+#    #+#              #
-#    Updated: 2023/12/06 13:00:58 by dvandenb         ###   ########.fr        #
+#    Updated: 2023/12/06 12:19:42 by dvandenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFILES	:= main.cpp Fixed.cpp
+CFILES	:= main.cpp Fixed.cpp Point.cpp bsp.cpp
 RM		:= rm -f
-NAME	:= moreUseful
+NAME	:= bsp
 CC		:= c++
 INCDIR	:= -I .
 

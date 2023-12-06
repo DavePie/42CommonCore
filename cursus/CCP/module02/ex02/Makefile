@@ -6,13 +6,13 @@
 #    By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 15:56:18 by dvandenb          #+#    #+#              #
-#    Updated: 2023/12/05 18:14:23 by dvandenb         ###   ########.fr        #
+#    Updated: 2023/12/06 13:00:46 by dvandenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFILES	:= main.cpp Fixed.cpp
 RM		:= rm -f
-NAME	:= firstOrtho
+NAME	:= nowTalking
 CC		:= c++
 INCDIR	:= -I .
 
