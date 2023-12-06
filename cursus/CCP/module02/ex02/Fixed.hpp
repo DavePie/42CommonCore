@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:01:11 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/05 18:57:14 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:23:51 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,30 @@ class Fixed
 		Fixed(const int input);
 		Fixed(const float intput);
 		~Fixed();
+
 		Fixed& operator=(const Fixed &f);
+		Fixed operator+(const Fixed &f);
+		Fixed operator-(const Fixed &f);
+		Fixed operator*(const Fixed &f);
+		Fixed operator/(const Fixed &f);
+		
+		Fixed& operator++();
+		Fixed operator++(int);
+		Fixed& operator--();
+		Fixed operator--(int);
+		
 		bool operator>(const Fixed &f);
+		bool operator>=(const Fixed &f);
+		bool operator<(const Fixed &f);
+		bool operator<=(const Fixed &f);
+		bool operator==(const Fixed &f);
+		bool operator!=(const Fixed &f);
+
+		static Fixed& min(Fixed &a, Fixed &b);
+		static const Fixed& min(const Fixed &a, const Fixed &b);
+		static Fixed& max(Fixed &a, Fixed &b);
+		static const Fixed& max(const Fixed &a, const Fixed &b);
+
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
 		float toFloat(void) const;

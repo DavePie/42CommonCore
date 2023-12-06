@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:15:16 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/05 18:54:05 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:22:29 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ Fixed::Fixed(const int input)
 
 Fixed::Fixed(const float input)
 {
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 	val = (int)std::roundf(input * 256);
 }
 
