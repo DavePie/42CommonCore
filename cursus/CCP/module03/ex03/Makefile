@@ -6,13 +6,13 @@
 #    By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 15:56:18 by dvandenb          #+#    #+#              #
-#    Updated: 2023/12/06 15:42:19 by dvandenb         ###   ########.fr        #
+#    Updated: 2023/12/07 11:31:40 by dvandenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFILES	:= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 RM		:= rm -f
-NAME	:= FragTrap
+NAME	:= DiamondTrap
 CC		:= c++
 INCDIR	:= -I .
 

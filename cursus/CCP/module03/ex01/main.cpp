@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 13:37:39 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/06 14:58:38 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:29:24 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int main()
 	bob.attack("god");
 	bob.attack("god");
 	bob.attack("god");
-	bob.attack("god");
-	bob.attack("god");
-	bob.attack("god");
-	bob.attack("god");
+	bob.beRepaired(3);
+	bob.takeDamage(10);
 	bob.guardGate();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 13:56:46 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/06 17:57:38 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:45:23 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ class ScavTrap: public virtual ClapTrap
 		void attack(const std::string &target);
 		~ScavTrap();
 		ScavTrap(ScavTrap &other);
+		ScavTrap& operator=(ScavTrap& other);
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:24:30 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/06 18:04:03 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:34:27 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ class DiamondTrap : public FragTrap, public ScavTrap
 		DiamondTrap();
 	public:
 		DiamondTrap(std::string name);
+		~DiamondTrap();
+		DiamondTrap(DiamondTrap &other);
+		DiamondTrap& operator=(DiamondTrap &other);
 		void whoAmI(void);
 };
 #endif

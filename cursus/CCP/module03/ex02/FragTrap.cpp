@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:04:33 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/06 17:17:39 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:45:50 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,13 @@ FragTrap::FragTrap(FragTrap &other) : ClapTrap(other.name)
 void FragTrap::highFivesGuys(void)
 {
 	std::cout << "FragTrap " << name << " positively requests a high five!" << std::endl;
+}
+FragTrap &FragTrap::operator=(FragTrap &other)
+{
+	name = other.name;
+	hit_pts = other.hit_pts;
+	energy_pts = other.energy_pts;
+	attack_dmg = other.attack_dmg;
+	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:03:11 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/06 18:05:50 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:45:03 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,13 @@ void ScavTrap::attack(const std::string &target)
 	energy_pts--;
 	std::cout << "ScavTrap " << name << " attacks " << target
 		<< ", causing " << attack_dmg << " points of damage!" << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(ScavTrap &other)
+{
+	name = other.name;
+	hit_pts = other.hit_pts;
+	energy_pts = other.energy_pts;
+	attack_dmg = other.attack_dmg;
+	return *this;
 }
