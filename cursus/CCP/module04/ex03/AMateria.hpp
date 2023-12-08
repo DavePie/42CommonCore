@@ -18,8 +18,8 @@ class AMateria
 {
 	protected:
 		std::string type;
-	public:
 		AMateria();
+	public:
 		AMateria(std::string const & type);
 		AMateria(AMateria & other);
 		AMateria & operator=(AMateria &other);

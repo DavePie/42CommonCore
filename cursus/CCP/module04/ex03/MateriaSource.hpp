@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:18:45 by dvandenb          #+#    #+#             */
-/*   Updated: 2023/12/07 18:43:36 by dvandenb         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:09:19 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class MateriaSource: public IMateriaSource
 		AMateria *templates[4];
 	public:
 		MateriaSource();
+		MateriaSource(MateriaSource & other);
+		MateriaSource & operator=(MateriaSource & other); // Doesn't delete old templates
 		~MateriaSource();
 		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
