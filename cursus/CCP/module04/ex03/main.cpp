@@ -42,9 +42,14 @@ int main()
 	me->unequip(2);
 	me->unequip(2);
 	me->use(2, *bob);
+	Character fred("fred");
+	fred.equip(src->createMateria("ice"));
+	Character john = fred;
+	john.use(0, *me);
 	delete ice;
 	delete bob;
 	delete me;
 	delete src;
+	//delete fred;
 	return 0;
 }
