@@ -6,7 +6,7 @@
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:51:02 by dvandenb          #+#    #+#             */
-/*   Updated: 2024/01/12 18:37:05 by dvandenb         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:46:50 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 template <class T>
 inline int easyfind(T c, int i)
 {
-	for (typename T::iterator it = c.begin(); it != c.end(); it++)
-		if (*it == i)
-			return *it;
+	
+	if (std::find(c.begin(), c.end(), i) != c.end())
+		return (*std::find(c.begin(), c.end(), i));
 	throw std::runtime_error("Element does not exist");
 }
 

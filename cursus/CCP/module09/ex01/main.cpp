@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvandenb <dvandenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:39:13 by dvandenb          #+#    #+#             */
-/*   Updated: 2024/01/19 14:19:02 by dvandenb         ###   ########.fr       */
+/*   Created: 2024/01/23 13:51:08 by dvandenb          #+#    #+#             */
+/*   Updated: 2024/01/23 13:57:20 by dvandenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-# define SPAN_HPP
-# include <list>
-class Span
-{
-	private:
-		int *a;
-		unsigned int size;
-		unsigned int l;
-	public:
-		Span(unsigned int size);
-		~Span();
-		Span(const Span & other);
-		Span &operator=(const Span &other);
+#include "RPN.hpp"
 
-		void addNumber(int num);
-		void addNumbers(std::list<int>::iterator begin, std::list<int>::const_iterator end);
-		int shortestSpan();
-		int longestSpan();
-};
-#endif
+int main(int ac, char*av[])
+{
+	if (ac != 2)
+	{
+		std::cout << "Error: invalid number of arguments" << std::endl;
+		return (1);
+	}
+	RPN::eval(av[1]);
+	return (0);
+}
