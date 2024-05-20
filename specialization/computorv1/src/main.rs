@@ -326,17 +326,26 @@ fn print_poly(poly: &BTreeMap<u32, Coef>) -> u32 {
         if value.exp > max_degree {
             max_degree = value.exp;
         }
-        if value.num >= 0.0 {
-            if prev {
-                print!(" + ");
+        match (value.num >= 0.0, prev) {
+            (false, _) => print!(" - "),
+            (true, false) => print!(" "),
+            (true, true) => print!(" + "),
+        };
+        if (value.num != 1.0 && value.num != -1.0) || value.exp == 0 {
+            if value.num >= 0.0 {
+                print!("{}", value.num);
             } else {
-                print!(" ");
+                print!("{}", value.num * -1.0);
             }
-            print!("{}", value.num);
-        } else {
-            print!(" - {}", value.num * -1.0);
+            if value.exp != 0 {
+                print!(" * ");
+            }
         }
-        print!(" * X^{}", value.exp);
+        match value.exp {
+            0 => {}
+            1 => print!("X"),
+            other => print!("X^{}", other),
+        }
         prev = true;
     }
     if !prev {
