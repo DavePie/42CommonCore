@@ -33,6 +33,11 @@ enum TokenType {
     Edge,
 }
 
+struct Complex {
+    real: f64,
+    imaginary: f64,
+}
+
 fn get_token_type(s: &str) -> TokenType {
     match s {
         "=" => TokenType::Equal,
@@ -107,7 +112,8 @@ fn extract_tokens<'a>(tokens: &mut Vec<&'a str>, input: &'a String) -> bool {
                 }
             }
             CharType::Invalid => {
-                print!("Error: Unrecognized symbol {c}\n");
+                println!("\n\x1b[31mPARSING ERROR\x1b[0m");
+                println!("Error: Unrecognized symbol {c}");
                 return false;
             }
         };
@@ -118,15 +124,16 @@ fn extract_tokens<'a>(tokens: &mut Vec<&'a str>, input: &'a String) -> bool {
 fn print_tokens_err(tokens: &mut Vec<&str>, pos: usize, mes: &str) {
     let mut len = 0;
     let last_len = tokens.get(pos).expect("out of range").len();
+    println!("\n\x1b[31mPARSING ERROR\x1b[0m");
     for (i, s) in tokens.iter().enumerate() {
         print!("{s} ");
         if i < pos {
             len += s.len() + 1;
         }
     }
-    print!("\n{: <1$}", "", len);
+    print!("\n\x1b[93m{: <1$}", "", len);
     print!("{:^<1$}_", "", last_len);
-    println!("{mes}");
+    println!("{mes}\x1b[0m");
 }
 
 fn add_coef(poly: &mut BTreeMap<u32, Coef>, coef: &mut Coef, dir: f64) {
@@ -162,40 +169,27 @@ fn add_coef_update(poly: &mut BTreeMap<u32, Coef>, coef: &mut Coef, dir: f64) {
     coef.num = 1.0;
 }
 
-fn main() {
-    let args: Vec<String> = env::args().collect();
-    if args.len() != 2 {
-        print!("Invalid number of arguments\n");
-        return;
-    }
-
-    let mut tokens: Vec<&str> = Vec::new();
-    if !extract_tokens(&mut tokens, &args[1]) {
-        return;
-    }
-
-    let mut poly = BTreeMap::new();
-
+fn convert_tokens_poly(poly: &mut BTreeMap<u32, Coef>, tokens: &mut Vec<&str>) -> bool {
     let mut cur_coef = Coef { num: 1.0, exp: 0 };
     let mut prev = TokenType::Edge;
     let mut equal_dir = 1.0;
     for (i, s) in tokens.iter().enumerate() {
         let token_type = get_token_type(s);
         if matches!(token_type, TokenType::Invalid) {
-            print_tokens_err(&mut tokens, i, "Invalid token\n");
-            return;
+            print_tokens_err(tokens, i, "Invalid token\n");
+            return false;
         }
         let mut right = TokenType::Edge;
         if i + 1 < tokens.len() {
             right = get_token_type(tokens.get(i + 1).expect("Out of range"));
             if matches!(right, TokenType::Invalid) {
-                print_tokens_err(&mut tokens, i + 1, "Invalid token\n");
-                return;
+                print_tokens_err(tokens, i + 1, "Invalid token\n");
+                return false;
             }
         }
         if !validate_token(&prev, &token_type, &right) {
-            print_tokens_err(&mut tokens, i, "Incorrect token placement\n");
-            return;
+            print_tokens_err(tokens, i, "Incorrect token placement\n");
+            return false;
         }
         match token_type {
             TokenType::X => {
@@ -203,11 +197,11 @@ fn main() {
                     cur_coef.exp = cur_coef.exp + 1
                 }
             }
-            TokenType::Plus => add_coef_update(&mut poly, &mut cur_coef, equal_dir),
+            TokenType::Plus => add_coef_update(poly, &mut cur_coef, equal_dir),
             TokenType::Minus => {
                 match prev {
                     TokenType::Times | TokenType::Edge | TokenType::Equal => (),
-                    _ => add_coef_update(&mut poly, &mut cur_coef, equal_dir),
+                    _ => add_coef_update(poly, &mut cur_coef, equal_dir),
                 };
                 cur_coef.num = cur_coef.num * -1.0;
             }
@@ -217,12 +211,8 @@ fn main() {
                         + match s.parse::<u32>() {
                             Ok(n) => n,
                             Err(_) => {
-                                print_tokens_err(
-                                    &mut tokens,
-                                    i,
-                                    "Expected unsigned int for exponent\n",
-                                );
-                                return;
+                                print_tokens_err(tokens, i, "Expected unsigned int for exponent\n");
+                                return false;
                             }
                         };
                 } else {
@@ -230,18 +220,18 @@ fn main() {
                         * match s.parse::<f64>() {
                             Ok(n) => n,
                             Err(_) => {
-                                print_tokens_err(&mut tokens, i, "Expected float for constant\n");
-                                return;
+                                print_tokens_err(tokens, i, "Expected float for constant\n");
+                                return false;
                             }
                         };
                 }
             }
             TokenType::Equal => {
-                add_coef_update(&mut poly, &mut cur_coef, equal_dir);
+                add_coef_update(poly, &mut cur_coef, equal_dir);
                 equal_dir *= -1.0;
                 if equal_dir == 1.0 {
-                    print_tokens_err(&mut tokens, i, "Duplicate Equal Sign\n");
-                    return;
+                    print_tokens_err(tokens, i, "Duplicate Equal Sign\n");
+                    return false;
                 }
             }
             _ => {}
@@ -249,13 +239,98 @@ fn main() {
         prev = token_type;
     }
 
-    add_coef_update(&mut poly, &mut cur_coef, equal_dir);
+    add_coef_update(poly, &mut cur_coef, equal_dir);
+    if equal_dir == 1.0 {
+        println!("\n\x1b[31mPARSING ERROR\x1b[0m");
+        println!("What was provided was not an equation (no equal sign)");
+        return false;
+    }
+    return true;
+}
 
+fn get_or_zero(poly: &BTreeMap<u32, Coef>, val: u32) -> f64 {
+    match poly.get(&val) {
+        Some(n) => n.num,
+        None => 0.0,
+    }
+}
+
+fn solve_quaderatic(a: f64, b: f64, c: f64) -> (Complex, Complex) {
+    let discriminant = b * b - (4.0 * a * c);
+    if discriminant < 0.0 {
+        return (
+            Complex {
+                real: -b / 2.0 / a,
+                imaginary: (-discriminant).sqrt() / 2.0 / a,
+            },
+            Complex {
+                real: -b / 2.0 / a,
+                imaginary: -(-discriminant).sqrt() / 2.0 / a,
+            },
+        );
+    }
+    return (
+        Complex {
+            real: (-b + discriminant.sqrt()) / 2.0 / a,
+            imaginary: 0.0,
+        },
+        Complex {
+            real: (-b - discriminant.sqrt()) / 2.0 / a,
+            imaginary: 0.0,
+        },
+    );
+}
+
+fn solve_polynomial(poly: &BTreeMap<u32, Coef>, max_degree: u32) {
+    match max_degree {
+        0 => match get_or_zero(&poly, 0) {
+            0.0 => println!("THERE IS AN INFINITE NUMBER OF SOLUTIONS"),
+            _ => println!("THERE IS NO SOLUTION"),
+        },
+        1 => {
+            println!(
+                "The solution is {}\n",
+                -get_or_zero(&poly, 0) / get_or_zero(&poly, 1)
+            )
+        }
+        2 => {
+            let solutions = solve_quaderatic(
+                get_or_zero(&poly, 2),
+                get_or_zero(&poly, 1),
+                get_or_zero(&poly, 0),
+            );
+            if solutions.0.imaginary != 0.0 {
+                println!("Discriminant is negative. Solutions are imaginary:");
+                println!("{} + {}i", solutions.0.real, solutions.0.imaginary);
+                println!("{} + {}i", solutions.1.real, solutions.1.imaginary)
+            } else if solutions.0.real == solutions.1.real {
+                println!("Discriminant is zero. There is one repeated solution:");
+                println!("{}", solutions.0.real);
+            } else {
+                println!("Discriminant is positive. Solutions are real:");
+                println!("{}", solutions.0.real);
+                println!("{}", solutions.1.real)
+            }
+        }
+        _ => {
+            println!("Degree is too large, can't solve.")
+        }
+    }
+}
+
+fn print_poly(poly: &BTreeMap<u32, Coef>) -> u32 {
+    print!("Reduced form:     ");
     let mut prev = false;
-    for (_key, value) in &poly {
+    let mut max_degree: u32 = 0;
+    for (_key, value) in poly {
+        if value.exp > max_degree {
+            max_degree = value.exp;
+        }
         if value.num >= 0.0 {
             if prev {
                 print!(" + ");
+            } else {
+                print!(" ");
             }
             print!("{}", value.num);
         } else {
@@ -267,5 +342,32 @@ fn main() {
     if !prev {
         print!("0");
     }
-    print!(" = 0\n");
+    println!(" = 0");
+    return max_degree;
+}
+
+fn process_polynomial(input: &String) {
+    let mut tokens: Vec<&str> = Vec::new();
+    if !extract_tokens(&mut tokens, &input) {
+        return;
+    }
+
+    let mut poly = BTreeMap::new();
+    if !convert_tokens_poly(&mut poly, &mut tokens) {
+        return;
+    }
+
+    let max_degree = print_poly(&poly);
+    println!("Polynomial degree: {max_degree}");
+
+    solve_polynomial(&poly, max_degree);
+}
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    if args.len() != 2 {
+        println!("Invalid number of arguments");
+        return;
+    }
+    process_polynomial(&args[1]);
 }
