@@ -41,14 +41,14 @@ struct Complex {
 fn get_token_type(s: &str) -> TokenType {
     match s {
         "=" => TokenType::Equal,
-        "X" => TokenType::X,
+        "X" | "x" => TokenType::X,
         "-" => TokenType::Minus,
         "+" => TokenType::Plus,
         "^" => TokenType::Pow,
         "." => TokenType::Invalid,
         "*" => TokenType::Times,
         _ => {
-            if s.contains("X") {
+            if s.contains("X") || s.contains("x") {
                 return TokenType::Invalid;
             }
             TokenType::Num
@@ -60,30 +60,26 @@ fn validate_token(left: &TokenType, cur: &TokenType, right: &TokenType) -> bool 
     let x = &TokenType::X;
     let n = &TokenType::Num;
     let m = &TokenType::Minus;
-    // let pw = &TokenType::Pow;
-    // let p = &TokenType::Plus;
-    // let e = &TokenType::Equal;
+
     match cur {
         TokenType::Plus => (left == x || left == n) && (right == x || right == n),
         TokenType::Minus => right == x || right == n,
         TokenType::Times => (right == m || right == n || right == x) && left != &TokenType::Edge,
         TokenType::Pow => left == x && right == n,
-        TokenType::Num => right != n && left != n && right != x && left != x,
+        TokenType::Num => right != n && left != n,
         TokenType::Equal => {
             (left == n || left == x)
                 && (right == n || right == x || right == m || right == &TokenType::Plus)
         }
-        TokenType::X => {
-            right != x && left != x && left != &TokenType::Pow && right != n && left != n
-        }
+        TokenType::X => left != &TokenType::Pow, ////right != x && left != x && 
         _ => false,
     }
 }
 
 fn get_char_type(c: char) -> CharType {
     match c {
-        '0'..='9' | 'X' | '.' => CharType::Value,
-        '+' | '-' | '*' | '^' | ' ' | '=' => CharType::Seperator,
+        '0'..='9' | '.' => CharType::Value,
+        '+' | '-' | '*' | '^' | ' ' | 'X' | '=' | 'x' => CharType::Seperator,
         _ => CharType::Invalid,
     }
 }
