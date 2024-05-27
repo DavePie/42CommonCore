@@ -255,27 +255,40 @@ fn get_or_zero(poly: &BTreeMap<u32, Coef>, val: u32) -> f64 {
     }
 }
 
+fn sqrt(num: f64) -> f64 {
+    if num == 0.0 {
+        return 0.0;
+    }
+    let mut sqrt = num / 2.0;
+    let mut g1 = 0.0;
+    while g1 - sqrt != 0.0 {
+        g1 = sqrt;
+        sqrt = (g1 + (num / g1)) / 2.0;
+    }
+    return sqrt;
+}
+
 fn solve_quaderatic(a: f64, b: f64, c: f64) -> (Complex, Complex) {
     let discriminant = b * b - (4.0 * a * c);
     if discriminant < 0.0 {
         return (
             Complex {
                 real: -b / 2.0 / a,
-                imaginary: (-discriminant).sqrt() / 2.0 / a,
+                imaginary: sqrt(-discriminant) / 2.0 / a,
             },
             Complex {
                 real: -b / 2.0 / a,
-                imaginary: -(-discriminant).sqrt() / 2.0 / a,
+                imaginary: -sqrt(-discriminant) / 2.0 / a,
             },
         );
     }
     return (
         Complex {
-            real: (-b + discriminant.sqrt()) / 2.0 / a,
+            real: (-b + sqrt(discriminant)) / 2.0 / a,
             imaginary: 0.0,
         },
         Complex {
-            real: (-b - discriminant.sqrt()) / 2.0 / a,
+            real: (-b - sqrt(discriminant)) / 2.0 / a,
             imaginary: 0.0,
         },
     );
