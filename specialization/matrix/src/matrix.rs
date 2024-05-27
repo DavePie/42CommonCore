@@ -1,39 +1,66 @@
-use std::ops::{Index, IndexMut};
+use std::ops::{Add, Index, IndexMut};
 
 use crate::vector::Vector;
 
-pub struct Matrix<K> {
-    cols: Vec<K>,
-    m: usize,
-    n: usize,
+pub struct Matrix<K, const N: usize, const M: usize> {
+    cols: Vector<Vector<K, M>, N>,
 }
 
-impl<K> Matrix<K> {
-    pub fn new(cols: Vector<K>) -> Self {
-		let n = cols.len();
-		
+#[macro_export]
+macro_rules! matrix {
+    ($( $( $x:expr ),* );* $(;)?) => {
+        {
+            let data = vector![
+                $(
+                    vector![$( $x ),*]
+                ),*
+            ];
+            Matrix::new(data)
+        }
+    };
+}
+
+impl<K: Copy, const N: usize, const M: usize> Matrix<K, N, M> {
+    pub fn new(cols: Vector<Vector<K, M>, N>) -> Self {
+
         Matrix { cols }
     }
 
-    pub fn len(&self) -> usize {
-        self.elements.len()
+    pub fn num_cols(&self) -> usize {
+        M
     }
 
-    pub fn get(&self, index: usize) -> Option<&K> {
-        self.elements.get(index)
+    pub fn num_rows(&self) -> usize {
+        N
+    }
+
+    pub fn get(&self, index: usize) -> Vector<K, M> {
+        self.cols[index]
     }
 }
 
-impl<K> Index<usize> for Matrix<K> {
-    type Output = K;
+impl<K: Copy, const N: usize, const M: usize> Index<usize> for Matrix<K, N, M> {
+    type Output = Vector<K, M>;
 
     fn index(&self, index: usize) -> &Self::Output {
-        &self.elements[index]
+        &self.cols[index]
     }
 }
 
-impl<K> IndexMut<usize> for Matrix<K> {
+impl<K: Copy, const N: usize, const M: usize> IndexMut<usize> for Matrix<K, N, M> {
     fn index_mut(&mut self, index: usize) -> &mut Self::Output {
-        &mut self.elements[index]
+        &mut self.cols[index]
+    }
+}
+
+
+impl<K: Copy, const N: usize, const M: usize> Add for Matrix<K, N, M>
+where
+    K: Add<Output = K> + Copy,
+{
+    type Output = Matrix<K, N, M>;
+
+    fn add(self, other: Matrix<K, N, M>) -> Matrix<K, N, M> {
+        Matrix::new( Vector::new(std::array::from_fn(|i| self.cols[i] + other.cols[i])))
     }
 }
