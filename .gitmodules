@@ -1,0 +1,3 @@
+[submodule "SuperMiniRT"]
+	path = SuperMiniRT
+	url = https://github.com/DavePie/SuperMiniRT
