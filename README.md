@@ -12,7 +12,7 @@ Each inside of each folder, there is a pdf file containing the project specifica
 | get_next_line | 01 | Read next line from file | static variables, reading from file
 | ft_printf | 01 | Recreate the `printf` function | variable function arguments
 | minitalk | 02 | Sending signals between programs | signals, en/decoding |
-| pushswap | 02 | Sorting a unique data structure | dequeue, algorithms
+| push_swap | 02 | Sorting a unique data structure | dequeue, algorithms
 | fract-ol | 02 | Rendering fractals | graphics, mathematics |
 | minishell | 03 | Creating a simple bash shell | complex parsing, bash, file manipulation |
 | Philosophers | 03 | Simulating a scenario with threads | mutex, multiple threads |

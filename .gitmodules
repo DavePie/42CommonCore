@@ -10,3 +10,6 @@
 [submodule "transcendence"]
 	path = transcendence
 	url = https://github.com/Rain36522/transcendence
+[submodule "minishell"]
+	path = minishell
+	url = https://github.com/DavePie/MiniShell
