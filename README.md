@@ -5,7 +5,7 @@ These projects are from the 42 Common Core. Most projects are in the C programmi
 ## Project Breakdown
 Each inside of each folder, there is a pdf file containing the project specification provided by the school, alone with a seperate README for that project. The projects are listed in this README in order of completion. These projects are divided into different ranks, where project from a later rank are unlocked when you complete all the projects from an earlier rank
 ## Project Overviews
-| Name | Rank | Description | Concepts |
+| Name | Rank | Description | Main Concepts |
 | - | - | - | - |
 | piscine | N/A | Introduction to C | pointers, arrays, etc
 | Libft | 00 | First library in C | string, list manipulation
